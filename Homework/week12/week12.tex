@@ -1,0 +1,192 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\nr}{nr}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+\newcommand{\conj}[2]{\prescript{#1}{}{#2}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 10}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+
+\par\textbf{1.}
+\par\textbf{(a)}
+\begin{equation*}
+   F: \Hom_G(V,\widetilde{W})\ni f\mapsto [W\ni w\mapsto (v\mapsto(f(v)(w)))].
+\end{equation*}
+We check the smoothness, that is 
+\begin{equation*}
+    \tilde{\pi}(g)(F(f))(w) =\tilde{\pi}(g) (v\mapsto f(v)(w)) = (v\mapsto f(\pi(g^{-1})(v))(w)) = (v\mapsto f(v)(\sigma(g)(w))).
+\end{equation*}
+For the $G$-equivariance, set $\Phi=F(f)$,
+\begin{align*}
+    \Phi(\sigma(g)w) & = (v\mapsto f(v)(\sigma(g)w)),\\
+    & = (v\mapsto (\tilde{\sigma}(g^{-1})f(v))(w)),\\
+    & = (v\mapsto (f(\pi(g^{-1})(v))(w))),\\
+    & = \tilde{\pi}(g)(v\mapsto f(v)(w)),\\
+    & = \tilde{\pi}(g)\Phi(w).
+\end{align*}
+We then construct a similar map $G:\Hom_G(W,\tilde{V})\to\Hom_G(V,\tilde{W})$.
+\par\textbf{(b)}
+\begin{align*}
+    \Hom_P(\pi,\rho_{\overline{U}}(\tilde{\sigma}))&\cong \Hom_G(i_P^G(\pi),\tilde{\sigma}),\\
+    &\stackrel{\text{\textbf{(a){}}}}{\cong} \Hom(\sigma,\tilde{i_P^G(\pi)}),\\
+    & \stackrel{\text{HW9.3}}{\cong} \Hom(\sigma,i_P^G(\tilde{\pi})),\\
+    & \cong \Hom_L(\rho_U(\sigma),\tilde{\pi}),\\
+    & \cong \Hom_L(\pi,\tilde{\rho_U(\sigma)}).
+\end{align*}
+Using Yoneda Lemma, we have the isomorphism.
+\par\textbf{2.}
+Suppose we have the result in \textbf{1}, 
+\begin{align*}
+    \Hom_G(i_P^G(\sigma),\widetilde{\pi}) & = \Hom_G(\pi,\tilde{i_P^G(\sigma)}),\\
+    & = \Hom_G(\pi,i_P^G(\tilde{\sigma})),\\
+    & = \Hom_L(\rho_U(\pi),\tilde{\sigma}),\\
+    & = \Hom_L(\rho_U(\pi),\tilde{\sigma}),\\
+    & = \Hom_L(\sigma,\tilde{\rho_{\overline{U}}(\tilde{\pi})}).
+\end{align*}
+We have a injection $\pi\hookrightarrow\tilde{\tilde{\pi}}$. Set $\pi_1 = \coker(\pi\hookrightarrow\tilde{\tilde{\pi}})$, then the second adjunction holds for $\tilde{\tilde{\pi}}$ and $\tilde{\tilde{\pi}}_1$. Considering the exact sequence,
+\begin{equation*}
+    \begin{tikzcd}
+0 \arrow[r] & \pi \arrow[r, hook] & \tilde{\tilde{\pi}} \arrow[r] & \tilde{\tilde{\pi}}_1
+\end{tikzcd}
+\end{equation*}
+By the naturality we have the second adjunction holds for $\ker f = \pi$. The last arrow is the composition of 
+\begin{center}
+    \begin{tikzcd}
+\tilde{\tilde{\pi}} \arrow[r] & \pi_1 \arrow[r, hook] & \tilde{\tilde{\pi}}_1
+\end{tikzcd}
+\end{center}
+As $\pi_1\to\tilde{\tilde{\pi}}_1$ is injective it preserves the kernel.
+\begin{center}
+\begin{tikzcd}
+0 \arrow[r] & {\Hom_G(i_P^G(\sigma),\pi)} \arrow[r] \arrow[d, dotted] & {\Hom_G(i_P^G(\sigma),\tilde{\tilde{\pi}})} \arrow[d, "{\Phi,\sim}"'] \arrow[r, "f_1"] & {\Hom_G(i_P^G(\sigma),\tilde{\tilde{\pi}}_1)} \arrow[d, "\sim"] \\
+0 \arrow[r] & {\Hom_L(\sigma,\rho_{\overline{U}}(\pi))} \arrow[r]     & {\Hom_L(\sigma,\rho_{\overline{U}}(\tilde{\tilde{\pi}}))} \arrow[r, "f_2"']            & {\Hom_L(\sigma,\rho_U(\tilde{\tilde{\pi_1}}))}                 
+\end{tikzcd}
+\end{center}
+Note that $\Hom_G(i_P^G(\sigma),\cdot)$ is left exact and $\rho_{\overline{U}}(\cdot)$ is exact, thus the composition of two left exact functors are still left-exact.
+Thus $\Phi$ induces $\ker f_1\cong \ker f_2$.
+\par\textbf{3.}
+\begin{align*}
+    t_p(b)&=i_P^G(b),\\
+    V_{\Ind_P^G(\Sigma)}&\mapsto V_\Sigma,\\
+    f&\mapsto f(1).
+\end{align*}
+Suppose $i_P^G(b) = 0$ then $b(f(g)) = 0\forall g\in G$ where $f\in V_{\Ind_P^G(\Sigma)}$.
+For $v\in V_{\Sigma}$, then take 
+\begin{equation*}
+    a_v:G\to V_\Sigma, g\mapsto\begin{cases}
+        \Sigma(p)v,\quad (g=pk\in PK_0),\\
+        0,\quad (\text{otherwise})
+    \end{cases}
+\end{equation*}
+$\Sigma$ is smooth as of $(V_\Sigma)^K$ for same open compact $K\subseteq P$, such that $K\supset K_0\cap P$.
+\par\textbf{4.}
+Let 
+\begin{equation*}
+    \Sigma_1 = \cind_{H'}^H(\sigma)\otimes(\delta_G/\delta_H)^{-1},\Sigma_2 = \cind_{H'}^H(\sigma)\otimes(\delta(G)/\delta(H'))^{-1}.
+\end{equation*}
+\begin{center}
+\begin{tikzcd}
+\cind_H^G(\cind_{H'}^H(\sigma))=\cind_H^G(\Sigma_!\otimes(\delta_G/\delta_H)) \arrow[r]                            & \hecke(G)\tens{\hecke(H)}\Sigma_1 \arrow[l]                   \\
+\Sigma_1=\cind_{H'}^H(\Sigma_2\otimes(\delta_G/\delta_H)) \arrow[r]                                                & \hecke(H)\tens{\hecke(H')}\Sigma_2 \arrow[l]                  \\
+\hecke(G)\tens{\hecke(H)}\Sigma_1=\hecke(G)\tens{\hecke(H)}(\hecke(H)\tens{\hecke(H')}\Sigma_2) \arrow[r, "\cong"] & \hecke(G)\tens{\hecke(H')}\Sigma_2 \arrow[d]                  \\
+                                                                                                                   & \cind_{H'}^G(\Sigma_2\otimes(\delta_G/\delta_{H'})) \arrow[u]
+\end{tikzcd}
+\end{center}
+Recall we have,
+\begin{equation*}
+    \cind_{H}^G(\cind_{H'}^G(\sigma\tens 1/\delta_{H'}))\cong \cind_H^G(\cind_{H'}^H(\sigma\otimes(\delta_H/\delta_{H'}))\tens 1/\delta_H)\cong\cind_{H'}^G(\sigma\tens 1/\delta_{H'}).
+\end{equation*}
+
+\end{document}

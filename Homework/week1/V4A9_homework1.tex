@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 1}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)} Let $\varphi:H\times V\to V$ be such that $\varphi(g,v) = \pi(g)(v)$.\\
+\par\textbf{(a)$\Rightarrow$(b)} For any $v\in V$, $\Stab_H(v)$ is open, thus it contains a basis consists of locally compact open subgroups. Pick one such subgroup $K$, we have $v\in V^K$.\\
+\par\textbf{(b)$\Rightarrow$(c)} For any $v\in V$, there is $K$ such that $K$ fixes $v$. Clearly $K\times\{v\}\subseteq\varphi^{-1}(v)$. For arbitrary $(g,w)\in\varphi^{-1}(v)$, note that $G$ is a topological group thus $gK\times\{w\}\subseteq\varphi^{-1}(v)$ is an open subset. Thus each basis element of the topology on $V$ has an open preimage.\\
+\par\textbf{(c)$\Rightarrow$(a)} For any $v\in V$, we have $H\times\{v\}$ is open by definition of Product topology and $\varphi^{-1}(v)$ is also open by assumption. Observe that $\Stab_H(v) = H\times\{v\}\cap\varphi^{-1}(v)$ which is an intersection of two open sets which is open.\\
+\par\textbf{(2)}
+Using Iwasawa decomposition, we have,
+\begin{equation*}
+  \SL_2(F) = BK,\quad(K = \SL_2(\mathcal{O}_F)).
+\end{equation*}
+By basic group theory, we have,
+\begin{equation*}
+  B\backslash \SL_2(F)/K = 
+\end{equation*}
+\par\textbf{(3)} The direction $\Leftarrow$ is trivial. Suppose $G$ has a proper parabolic subgroup. Consider a morphism of $G$-representation $\varphi:\triv\to\Ind^G_P\sigma$ such that $\varphi(1) = \triv$, note that $\triv:G\to \C$ itself is contained in $\Ind_P^G\C$. We can easily check
+\begin{equation*}
+  \varphi\circ\triv(g)(1) = \Ind_P^G\sigma(g)\circ \varphi(1) \Rightarrow \varphi(1) = \Ind_P^G\sigma(g)\circ \varphi(1). 
+\end{equation*}
+In other words, $f$ is right $G$ invariant. This is of course injective. We conclude that $(\triv,\C)$ can be embedded into any positive dimensional representation. Thus we have proven the contrapositive of the direction we claimed.
+\par\textbf{(4)} We will prove the contraposition. Suppose $f\in\Hom_H(V_1,V_2)\backslash\{0\}$ exists, then by definition we have
+\begin{equation*}
+\forall z\in Z(H), f\circ\pi_1(z) = \pi_2(z)\circ f.
+\end{equation*}
+Since $f$ is $F$-linear, we obtain that 
+\begin{equation*}
+\forall z\in Z(H), \chi_1(z)f = \chi_2(z) f.
+\end{equation*}
+Thus the central characters coincide. 
+\par\textbf{(5)}
+\par\textbf{(a)+(b)} For any $k\in K$, we have 
+\begin{equation*}
+\pi(k)e_K(v) = {\frac 1 {\vert K\vert}}\int_K \pi(k)\pi(g)(v)dg = {\frac 1 {\vert K\vert}}\int_K \pi(g)(v)dg = e_K(v),
+\end{equation*}
+as $K$ is a subgroup. Thus $e_K:V\to V^K$. For any $v\in V^K$, obviously $e_K(v) = {\frac {\vert K\vert} {\vert K\vert}}v = v$. Thus this defines a projection.\\
+\par\textbf{(c)}Clearly $V=V^K\oplus(1-e_K)V$ as a vectorspace. We have 
+\begin{equation*}
+  \pi(k)e_K(v) = e_K(\pi(k)v)
+\end{equation*}
+as $K$-representations. Thus we conclude the statement to be true.\\
+\par \textbf{(d)} By definition, $K$ is a subgroup thus if $g$ runs through $K$, so does $g^{-1}$. Since $\lambda\in\tilde{V}$, there is a compact open subgroup $K'$ such that $\lambda\in (V^*)^{K'}$. Using $H$ is Hausdorff, we conclude $K\cap K'$ is again a compact open subgrouop. This assures us that $e_K:\tilde{V}\to \tilde{V^K}$ is well-defined. Also using $\lambda$ is linear, we get,
+\begin{equation*}
+  e_K\lambda(v) = {\frac 1 {\vert K\vert}}\int_K \pi^*(g)\lambda(v)dg = {\frac 1 {\vert K\vert}}\int_K \lambda(\pi(g^{-1})v)dg = \lambda(e_K(v)).
+\end{equation*}
+\par\textbf{(e)} By (c), there is a bijection between $V^*$ and $(V^K)^*\oplus ((1-e_K)V)^*$. By (d), $e_K$ defines a map from $\tilde{V}$ to $(V^K)^*$. For $\lambda\in\tilde{V}^K$, we have,
+\begin{equation*}
+  \lambda(v)= e_K\lambda(v) = \lambda(e_K v).
+\end{equation*}
+This is clearly injective and linear. For any $\lambda\in (V^K)^*$, we take $\nu:V\to k$ such that $\nu(v) = \lambda(e_K(v))$, then $\nu\in \tilde{V}^K$ and $e_K(\nu) = \lambda$.  Therefore, surjective.\\
+\par \textbf{(6)} a)$\Rightarrow$b) follows from Exercise 5 (e) together with the fact that a dual space of a finite dimensional vector space is of finite dimension. Note that by definition of dual representation we have,
+\begin{equation*}
+  \pi^{**}(g)\ev_v(\lambda) = \pi^*(g^{-1})\lambda(v) = \lambda(\pi(g)v) = \ev_{\pi(g)(v)}(f).
+\end{equation*}
+\par $a)b)\Leftrightarrow c)$, For any vectorspace $V$, we have the following inequality,
+\begin{equation*}
+  \dim V\leq\dim V^*.
+\end{equation*}
+In particular, the equality holds if and only if $V$ is finite dimensional. Again using (e) of the previous problem, we have
+\begin{equation*}
+\tilde{\tilde{V}}^K = (V^K)^{**},
+\end{equation*} 
+which is of finite dimension. Thus have the same dimension as $V^K$. We conclude $a),b)$ are equivalent to $c)$ by passing the exact sequence 
+\begin{center}
+  \begin{tikzcd}
+0 \arrow[r] & V \arrow[r] & \tilde{\tilde{V}} \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+to the fixed part of arbitrary compact open subgroup $K$ of $H$.
+\end{document}

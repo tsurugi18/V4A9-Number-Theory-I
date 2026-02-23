@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 3}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)}
+Let $v\otimes\lambda,u\otimes\mu\in V\otimes\tilde{V}$. Then their composition is 
+\begin{equation*}
+    [V\ni w\mapsto \mu(w)u]\circ[V\ni w\mapsto \lambda(w)v] = [V\ni w\mapsto \lambda(w)\mu(v)u].
+\end{equation*}
+Thus the corresponding element in hecke algebra is 
+\begin{equation*}
+    f_{\mu(v)\lambda, u}(h) = \deg\pi\mu(v)\lambda(\pi(h^{-1})(u)).
+\end{equation*}
+Consider the convolution,
+\begin{equation*}
+    f_{u,\mu}\ast f_{v,\lambda}(h) = (\deg\pi)^2\int_{H} \mu(\pi(g^{-1})(u))\lambda(\pi(h^{-1}g)(v))dg.
+\end{equation*}
+Let us denote $\lambda' = \tilde{\pi}(g)\lambda$. Since $(V,\pi)$ is finite and irreducible, by Schur orthogonality, we obtain 
+\begin{equation*}
+    f_{u,\mu}\ast f_{v,\lambda}(h) = (\deg\pi)^2\int_H m_{u,\mu}(g^{-1})m_{v,\lambda'}(g)dg = \deg\pi\lambda'(u)\mu(v) = \deg\pi\mu(v)\lambda(\pi(h^{-1})(v)).
+\end{equation*}
+Thus $\phi$ preserves products. 
+\par\textbf{(2)}
+\par\textbf{(b)}
+\begin{equation*}
+    (e^\pi)(\tau(g)(w)) = \tau(e^\pi_{K})(\tau(g)(w)) = \tau(e^\pi_{gKg^{-1}})(w) = \tau((g\times g)e_K^\pi)(w) = g\cdot e^\pi(w).
+\end{equation*}
+\par\textbf{(c)}
+By Lemma 25 from the class, since $K\subseteq K$, therefore,
+\begin{equation*}
+    e^\pi\circ e^\pi (w)  = \tau(e_K^\pi)\circ\tau(e_K^\pi)(w) = \tau(e_K^\pi\ast e_K^\pi)(w) = \tau(e_K^\pi)(w) = e^\pi(w).
+\end{equation*}
+
+\par\textbf{(d)}
+Consider a $H$-equivariant morphism $\alpha:W_1\to W_2$. Then for any $w\in W_1$, we have 
+\begin{equation*}
+    w\in W_1^K\Rightarrow \alpha(w)\in W_2^K.
+\end{equation*}
+Furthermore, $e^\pi_K$ is compactly supported by the definition, thus this commutes with a linear map $\alpha$, thus,
+\begin{equation*}
+    \tau(e_K^\pi)(\alpha(w)) = \alpha(\tau(e_K^\pi)(w)).
+\end{equation*}
+
+\par\textbf{3.}
+Let $W$ be a subrepresentation of $(\pi,V)$ for $V = \bigoplus_{i\in I} V_i$ for irreducible subrepresentations $V_i$. Then 
+\begin{equation*}
+    V =W\oplus W'
+\end{equation*}
+for another subrepresentation $W'$. Let $U\subseteq W$ be also a subrepresentation then again,
+\begin{equation*}
+    V = U\oplus U',
+\end{equation*}
+Then 
+\begin{equation*}
+    W = W\cap U\oplus W\cap U' = U\oplus (W\cap U').
+\end{equation*}
+Thus $W$ is semisimple. Remains to show the quotient is semisimple. 
+Let $W = \bigoplus_{j\in J}W_j$ where $W_j$ is an irreducible subrepresentaion. Consider an inclusion $\iota_j:W_j\hookrightarrow V$. Since $W_j$ is irreducible, we have $\iota_j(W_j)$ is an irreducible subrepresentation of $V$ thus there is $i\in I$ such that 
+\begin{equation*}
+    W_j  = V_i.
+\end{equation*}
+
+This measn that 
+\begin{equation*}
+    V/W = \bigoplus_{\substack{i\in I\\ V_i\not\subseteq W}}V_i.
+\end{equation*}
+Thus a quotient is semisimple if $V$ is semisimple. We conclude a subquotient is semisimple.
+
+
+\end{document}

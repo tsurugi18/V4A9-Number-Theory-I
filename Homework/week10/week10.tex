@@ -1,0 +1,249 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\nr}{nr}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 10}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\textbf{(1)}
+\par\textbf{(a)}
+By Bruhats-decomposition, we have $G= B\cup BwB$. By the definition of induced representations, we have 
+\begin{equation*}
+    f(1) = 0\Rightarrow \forall b\in B, f(b) = \sigma(b)f(1) = 0.
+\end{equation*}
+Thereore $f$ is supported in $BwB$.
+By definition, we have to show that 
+\begin{equation*}
+    \int_Nf(wn)dn,
+\end{equation*}
+is well-defined for any $f\in\Ind_B^G(W),f(1)=0$. 
+Observe that 
+\begin{equation*}
+    \begin{pmatrix}
+        t_1 & \:\\
+        \: & t_2
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & x\\
+        \: & 1
+    \end{pmatrix}
+    =\begin{pmatrix}
+        t_1 & \:\\
+        \: & t_2
+    \end{pmatrix},
+    \begin{pmatrix}
+        1 & x\\
+        \: & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        t_1 & xt_1\\
+        \: & t_2
+    \end{pmatrix}
+    =\begin{pmatrix}
+        t_1 & xt_2\\
+        \: & t_2
+    \end{pmatrix},
+\end{equation*}
+therefore we have $TN = NT$. Furthermore, elements of $T$ and $w$ commute therefore, we have,
+\begin{equation*}
+    BwB = TNwTN = BwN.
+\end{equation*}
+As $f$ is a smooth element of a $G$-representation, we have a compact open subgroup $K$ fixing $f$. By Iwahori decomposition, we may assume that,
+\begin{equation*}
+    K = (K\cap N)(K\cap T)(K\cap \overline{N}).
+\end{equation*}
+By the assumption on $f$, we conclude that $f$ vanishes on $B(K\cap\overline{N})$. We have,
+\begin{equation*}
+    \overline{N}w = wN.
+\end{equation*}
+thus the support of $f$ is contained in $Bw(K\cap N)$ which follows from that parabolic inductions are always compact.
+Observe that 
+\begin{equation*}
+    f\mapsto f_N(1) = \int_{K_N}f(wn)dn = \int_{K_N}\Ind_B^G(\sigma)(n)f(w)dn.
+\end{equation*}
+Thus this is $0$ if and only if $f\in V(N)$. Setting $f(w) = w_1$ for some $w_1\in W$, we see the map is surjective. Thus the latter statement is proven.
+\par\textbf{(b).}
+We have,
+\begin{equation*}
+    (tf)_N(x) = \int_N f(xwnt)dt.
+\end{equation*}
+Note that 
+\begin{equation*}
+    xwnt = xwtt^{-1}nt = xwtwwt^{-1}nt.
+\end{equation*}
+Using the definition 
+\begin{equation*}
+    \delta_B(t) = \left\vert{\frac {tKt^{-1}} {tKt^{-1}\cap K}}\right\vert\left\vert{\frac {K} {tKt^{-1}\cap K}}\right\vert^{-1},
+\end{equation*}
+and use $n\to t^{-1}nt$, we see 
+\begin{equation*}
+    (tf)_N(x) = \delta_B(t^{-1})\int_Nf(x\prescript{w}{}{t}wn)dn=\delta_B^{-1}(t)\int_Nf(x\prescript{w}{}{t}wn)dn.
+\end{equation*}
+Therefore $f\mapsto f_N(1)$ induces a morphism of $B$-representation $V\mapsto(\prescript{w}{}{\sigma}\otimes \delta_B,W)$.
+\par\textbf{(c).}
+We have a short exact sequence,
+\begin{center}
+\begin{tikzcd}
+0 \arrow[r] & V(N) \arrow[r] & V \arrow[r] & V_N \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+From part a), we have $V_N\cong W$. $V$ is a subrepresntation of an induced representation and by definition $N$ acts trivially on $V$. Therefore, we obtain the following,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & \prescript{w}{}{\sigma}\otimes\delta_B \arrow[r] & (\Ind_B^G\sigma) \arrow[r] & \sigma \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+Note that $N$ acts trivially via $\prescript{w}{}{\sigma}\otimes\delta_B,\sigma$ as they are inflated from $T$. Thus, taking the Jacquet functor, we obtain,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & \prescript{w}{}{\sigma}\otimes\delta_B \arrow[r] & (\Ind_B^G\sigma)_N \arrow[r] & \sigma \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+Setting $\sigma\otimes \delta_B^{{\frac 1 2}}\to\sigma'$, we get, 
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & \prescript{w}{}{\sigma'}\otimes\delta_B^{{\frac 1 2}} \arrow[r] & (\Ind_B^G\sigma\otimes\delta_B^{{\frac 1 2}})_N \arrow[r] & \sigma\otimes\delta_B^{{\frac 1 2}} \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+\begin{equation*}
+    0\subseteq \prescript{w}{}{\sigma}\subseteq \rho_N(i_B^G(\sigma)).
+\end{equation*}
+\par\textbf{2.} $Z(G)G^\circ \subseteq T$ and $G^\circ \ker (\chi),\chi\in X_{\nr}(G)$ Thus we have,
+\begin{equation*}
+    G^\circ\subseteq T.
+\end{equation*}
+\begin{align*}
+    \chi\otimes\pi\cong\pi&\Rightarrow W_{\chi\otimes\pi}=W_\pi,\\
+    &\Rightarrow \chi(z)W_{\pi}(z) = W_\pi(z)\forall z\in Z(G),\\
+    &\Rightarrow \chi|_{Z(G)} =1, (\Rightarrow \forall \chi\in X_{\nr}(G), Z(G)\subseteq \ker\chi).
+\end{align*}
+For part b). take $H=G/Z(G)G^\circ$ is finite abelian ths $H_T= T/Z(G)G^\circ \subseteq H$.
+Consider the map 
+\begin{equation*}
+    \Phi:G\to(\widehat{X_{\nr}(G)_\pi}), g\mapsto(\chi\mapsto\chi(g)).
+\end{equation*}
+We have $\Ker\Phi = T$ and 
+\begin{equation*}
+    \left\vert {\frac G T}\right\vert\leq \vert\widehat{(X_{\nr}(T)_\pi)}=\vert X_{\nr}(G)_\pi\vert.
+\end{equation*}
+We have for all $\chi\in X_{\nr}(G)_\pi,T\subseteq\ker\chi$,
+\begin{equation*}
+    X_{\nr}(G)_\pi\subseteq\{\nu\in X_{\nr}(G)_{\pi}\sep \nu|_T=1\}.
+\end{equation*}
+Thus we have,
+\begin{equation*}
+    \vert X_{\nr}(G)_{\pi}\vert \geq\left\vert{\frac G T}\right\vert.
+\end{equation*}
+\begin{equation*}
+    \{\nu\in X_{\nr}(G)\sep \nu|_T=1\} = \Ker F.
+\end{equation*}
+where $F:\hat{H}\to\hat{H}_1,\chi\mapsto\chi|_{H}$. 
+\begin{equation*}
+    \{\nu\in X_{\nr}(G)\sep \nu|_T=1\}=\{\nu:G\to\C^\times \sep \nu|_{G^\circ}=\nu|_T = 1\} = \{\nu:G/Z(G)G^\circ\to\C^\times\}.
+\end{equation*}
+Furthermore,
+\begin{align*}
+    \vert \hat{H}/\ker F\vert = \vert \image F\vert , {\frac {\vert G/Z(G)G^\circ\vert} {\vert \ker F\vert}}=\vert T/Z(G)G^\circ\vert \Rightarrow \vert G / T\vert = \vert\ker F\vert.
+\end{align*}
+\par\textbf{(c)} We have $G/G^\circ \cong \Z^n$ and $S/G^\circ\cong \Z$, 
+\par\textbf{3.}Suppose $F$ is faithful then we have an injection $\Hom(X,X)\to\Hom(F(X),F(X)) = \{0\}$. Thus $X=0_{\mathscr{A}}$.
+\par For the other direction, note that $F$ induces a morphism of abelian groups $F:\Hom(X,Y)\to\Hom(F(X),F(Y))$.
+Observe that $F(\Ker(F)) = 0$, therefore $\Ker(F) = 0$. Since we have an exact sequence,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & \ker F \arrow[r] & {\Hom(X,Y)} \arrow[r] & \image F \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+Therefore, we conclude $F$ is faithful.
+\end{document}

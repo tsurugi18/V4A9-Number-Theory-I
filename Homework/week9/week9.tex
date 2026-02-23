@@ -1,0 +1,252 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 9}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\textbf{(1)}
+Following from the hint, we construct a $G$-equivariant surjective map,
+\begin{equation*}
+    \hecke(G)\to \Ind_P^G(\delta_P), f\mapsto [g\mapsto \int_Pf(p)dp],
+\end{equation*}
+where $dp$ is a left Haar measure on $P$. Then we lift the map to get the desired map $I_P$, explicitly,
+\begin{center}
+    \begin{tikzcd}
+\Ind_P^G(\delta_P) \arrow[r, "I_P", dashed]           & G \\
+\hecke(G) \arrow[u, two heads] \arrow[ru, "\exists"'] &  
+\end{tikzcd}
+\end{center}
+ From a part of the solution from Homework 8, we have the following result,
+\begin{equation*}
+    \int_P f(xpg)dx = \delta_P(p)\int_Pf(xg)dx.
+\end{equation*}
+That is 
+\begin{equation*}
+    \delta_P(p)d(xp) = dx.
+\end{equation*}
+For the $G$-equivariance, we have,
+\begin{equation*}
+    (hf)\mapsto (g\mapsto \int f(pgh)dp = h\int f(pg)dp).
+\end{equation*}
+The equality follows from that we can write the right most hand side as a fintie sum. 
+We note an important definition below,
+\begin{remark}
+    $\underline{P}\subseteq\underline{G}$ is parabolic if and only if $\underline{G}/\underline{P}\hookrightarrow \mathbb{P}^n_F$ that is $\underline{G}/\underline{P}$ is projective. We have,
+    \begin{equation*}
+        \underline{G}(k)/\underline{P}(k)\hookrightarrow (\underline{G}/\underline{P})(k),
+    \end{equation*}
+    which is compact. And the last morphism is actually an isomorphism. For the intution, we have, $\GL_2/B=\Para^1$.
+\end{remark}
+\par In Homework 4, we have proved that for compact induction 
+\begin{equation*}
+    (\cind_N^H(\pi))^K = \bigoplus_{\overline{g}\in N\backslash H/K}W^{N\cap gKg^{-1}}.
+\end{equation*}
+$G=BK$ where $B$ is minimal parabolic and $K$ compact that is $G = PK = KP$ where $P$ is parabolic containing $B$. Thus $\Ind_P^G$ is actually a compact induction. Motivated by this, we have,
+\begin{equation*}
+    (\Ind_P^G(\delta_P))^K = \bigoplus_{\overline{g}\in P\backslash G/K}(\delta,\C)^{P\cap gKg^{-1}} = \bigoplus_{\overline{g}\in P\backslash G/K}\C.
+\end{equation*}
+Define 
+\begin{equation*}
+    \phi_{s,1}=\begin{cases}
+        \delta(p), g \in PsK,\\
+        0,\text{otherwise}.
+    \end{cases}
+\end{equation*}
+where $S$ is the complete set of representatives of $P\backslash G/K$. Now set $f(g) = \chi_{sK}(g)$. Then,
+\begin{equation*}
+    \int f(xg)dx = \phi_{s,1}(g) = \int_{gKg^{-1}\cap P}dx.
+\end{equation*}
+Recall that 
+\begin{equation*}
+    sKg^{-1}\cap P \not = \emptyset \Leftrightarrow sKg^{-1} = p\in P \Leftrightarrow g = p^{-1}sk \in PsK.
+\end{equation*}
+Therefore in that case for $g = psk$, $\vert sKg^{-1}\cap P\vert = \vert sKs^{-1}p^{-1}\cap P\vert$.
+\par We now construct $\hecke(G)\to \C$. Take,
+\begin{equation*}
+    \hecke(G)\ni f\mapsto \int_{G}f(g)dg\in\C.
+\end{equation*}
+By the surjectivity, for any $\phi\in\Ind_P^G(\delta_P)$, there is $f$ such that $f\mapsto \phi$. Since the surjective map is linear, in order to show the facrotization, it is enough to prove that any element killed by the map below,
+\begin{equation*}
+    \phi\mapsto\int_K\phi(k)dk
+\end{equation*}
+is contained in the kernel of $\hecke(G)\to \C$. Note that 
+\begin{equation*}
+    \hecke(G)^K
+\end{equation*}
+is spanned by $\{1_{gK}\}_{g\in G/K}$. Furthermore, we have already seen that ,
+\begin{equation*}
+    \int_P\chi_{gsK}d\mu_P = \mu_(P\cap sKg^{-1})\chi_{psK}(g).
+\end{equation*}
+Note that the right hand side is positive. Thus in order to kill it, we need to multiply $0$.
+Observe that,
+\begin{equation*}
+    \hecke(G) = \Span_{\C[G]}\{1_K\sep K\text{ is compact open}\}.
+\end{equation*}
+That is 
+\begin{equation*}
+    f = \sum g\chi_{Kg}.
+\end{equation*}
+Take an arbitrary compact open $K$, we will show that $\lambda\in\Hom(\hecke(G),\C)$ is determined by $\lambda(\chi_K)$. Consider two compact open $K_1,K_2$,
+\begin{equation*}
+    \lambda(K_1) = \lambda\left(\sum_{i=1}^s \chi_{K\cap Ksg_i}\right) = s\lambda(\chi_{K_1\cap K_2}),
+\end{equation*}
+where $s = [K_1:K_1\cap K_2]$. 
+\par\textbf{(2)}\\
+Let $\phi\in\Ind_P^G(\sigma),\Phi\in\Ind_P^G(\sigma^\vee\cdot \delta_P)$. Consider $G\ni\mapsto g\mapsto\langle \phi(g),\Phi(g)\rangle$. 
+Then for $p\in P$, we have,
+\begin{equation*}
+    \langle\phi(pg),\Phi(pg)\rangle = \delta_P(p)\Phi(g)(\sigma^\vee(p^{-1})\sigma(p)\phi(g)) = \delta_P(p)\langle\phi(g),\Phi(g)\rangle.
+\end{equation*}
+Since both slots take elements from induced representations we take
+\begin{equation*}
+    K(\phi)\cap K(\Phi)=K(g\mapsto\langle \phi(g),\Phi(g)\rangle).
+\end{equation*}
+Thus this lies in $\Ind_P^G(\delta_P)$. From exercise \textbf{(1)}, we have 
+\begin{equation*}
+    [g\mapsto\langle \phi(g),\Phi(g)\rangle]\mapsto I_P(\langle\phi,\Phi\rangle),
+\end{equation*}
+gives a linear functional $\Ind_P^G(\delta_P)\to \C$.\\
+\par Consider a map 
+\begin{equation*}
+\Ind_P^G(\sigma^\vee\cdot \delta_P)\ni\Phi\mapsto[\Ind_P^G(\sigma)\ni\phi\mapsto I_P(\langle \phi,\Phi\rangle)].
+\end{equation*}
+This is an element of $\Ind_P^G(\sigma)^\vee$. By the property \textbf{(a)} of $I_P$, we have,
+\begin{equation*}
+    I_P(\langle\phi,g\cdot\Phi\rangle) = I_P(\langle g^{-1}\cdot\phi,\Phi\rangle).
+\end{equation*}
+Therefore, the constructed map is indeed a $G$-homomorphism. \\
+\par For the functoriality, it follows from that $\Ind_P^G,(\cdot)^\vee$ and multiplying by $\delta_P$ are all functorial.\\
+Before moving on to the next problem, we note the following statement.
+\begin{proposition}
+    \begin{equation*}
+        \Ind_P^G(\delta_P)^K = \bigoplus_{g_i\in S}W^{P\cap g_iKg_i^{-1}}.
+    \end{equation*}
+    Suppose $\mathcal{W}_i$ is a basis of $W^{P\cap g_iKg_i^{-1}}$. Then 
+    \begin{equation*}
+        \{\phi_{g_i,w}\}_{g_i\in S,w\in\mathcal{W}_i}
+    \end{equation*}
+    is a basis of $\Ind_P^G(\delta_P)^K$.
+\end{proposition}
+\par\textbf{(3)}
+Let $K$  be an open compact subgroup. Take $\lambda\in (\Ind_P^G(\sigma)^\vee)^K = (\Ind_P^G(\sigma)^K)^\vee$ and $w\in W^K$, and 
+\begin{equation*}
+    f_{w,g_i}(g) = \begin{cases}
+        w,\quad g\in Pg_iK,\\
+        0,\quad \text{otherwise},
+    \end{cases}
+\end{equation*}
+where $g_i\in\{g_1,\cdots,g_n\} = P\backslash G/K$.
+Note that 
+\begin{equation*}
+\Ind_P^G(\sigma)^K = \cind_P^G(\sigma),
+\end{equation*} and $\{f_{w,g_i}\}$ spans it as it is locally constant and each support is a finite union of $Pg_iK$.
+Then $\lambda^\vee=w\mapsto \lambda(f_{w,g_i})$ gives an element of $(W^\vee)^K$. Similarly define,
+\begin{equation*}
+    f_{\lambda^\vee,g_i}(g) = \begin{cases}
+        \lambda^\vee,\quad g\in Pg_iK,\\
+        0,\quad \text{otherwise},
+    \end{cases}
+\end{equation*}
+Then this gives us that 
+\begin{equation*}
+I_P(\langle f_{w,g_i},f_{\lambda^\vee,g_j}\rangle) = I_P(\chi_{Pg_iK})\lambda^\vee(w) = I_P(\chi_{Pg_iK})\lambda(f_{w,g_i}), \quad g_i= g_j.
+\end{equation*}
+Thus by scaling it, we see this is locally surjective for all $K$ thus surjective globally. We also see that $\{f_{\lambda^\vee,g_i}\}$ is a basis for 
+\begin{equation*}
+(\Ind_P^G(\sigma^\vee\cdot\delta_P))^\vee = \cind_P^G(\sigma^\vee\cdot\delta_P).
+\end{equation*}
+Therefore, an kernel of element must take zero for all $f_{w,g_i}$ for each $i$. But for each $i$, it is a evaluation paring. We conclude this is injective. To prove the last statement take $\sigma\cdot\delta^{{\frac 1 2}}$ then $(\sigma\cdot\delta^{{\frac 1 2}})^\vee = \sigma^\vee\cdot\delta^{-{\frac 1 2}}$. Therefore, we have,
+\begin{equation*}
+    (\Ind_P^G(\sigma\cdot\delta_P^{{\frac 1 2}}))^\vee = \Ind_P^G(\sigma^\vee\cdot\delta_P^{-{\frac 1 2}}\cdot\delta_P) = \Ind_P^G(\sigma^\vee\cdot\delta_P^{{\frac 1 2}}).
+\end{equation*}
+\end{document}

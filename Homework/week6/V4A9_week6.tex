@@ -1,0 +1,112 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 6}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)}\\
+\par\textbf{(a)}
+Taking the basis $\{e_1,\cdots,e_p\}\cup\{e_{p+1},\cdots,e_{p+q}\}$ given in the problem, we see for any $X\in U(p,q)$, 
+\begin{equation*}
+    h_A(Xe_i,Xe_j) = h_A(e_i,e_j) = \begin{cases}
+        1 \quad i=j,\\
+        0 \quad i\not=j.
+    \end{cases}
+\end{equation*}
+From this we see that,
+\begin{equation*}
+    \mathbb{T}(A) = \diag(e^{i\theta_1}\otimes 1_A,\cdots,e^{i\theta_{p+q}}\otimes 1_A).
+\end{equation*}
+In particular, we have,
+\begin{equation*}
+    \mathbb{T}(\R) \cong (S^1)^{p+q}.
+\end{equation*}
+Therefore, $A_0=0$. We conclude $\mathbb{T}$ is not split.
+\par\textbf{(b)}
+We know that $U(n,n) \cong U(n,0)\times U(n,0)$. And for each $U(n)$, the borel subgroup is 
+\begin{equation*}
+    \mathbb{B}(A) = U(n,0)(A)\times U(0,n)\cap \{\text{upper triangular matrices}\}.
+\end{equation*}
+In particular $\mathbb{B}(\R) = \diag(e^{i\theta_1},\cdots,e^{i\theta_{2n}})$ since each column must be orthogonal to one another.
+\end{document}

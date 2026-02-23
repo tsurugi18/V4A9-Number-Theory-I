@@ -1,0 +1,503 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 3}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)}\\
+\par Consider $F= \Q_p$ and $G=\SL_2(F)$, we have,
+\begin{equation*}
+    K = \SL_2(\Z_p),
+\end{equation*}
+and in this case the parabolic subgroup is 
+\begin{equation*}
+    P = 
+    \left\{
+        \begin{pmatrix}
+        1 & \ast \\ 
+        0 & 1
+    \end{pmatrix}
+    \right\} 
+    \ltimes
+    \left\{
+        \begin{pmatrix}
+        1 & \ast \\ 
+        0 & 1
+    \end{pmatrix}
+    \right\} 
+\end{equation*}
+Consider 
+\begin{equation*}
+    K\cap M = \left\{
+        \begin{pmatrix}
+        x & \ast \\ 
+        0 & x^{-1}
+    \end{pmatrix}
+    \right\} , K\cap N = 
+    \left\{
+        \begin{pmatrix}
+        1 & x \\ 
+        0 & 1
+    \end{pmatrix}
+    \right\} 
+    K\cap\overline{N}=
+    \left\{
+        \begin{pmatrix}
+        1 & 0 \\ 
+        x & 1
+    \end{pmatrix}
+    \right\} .
+\end{equation*}
+However,
+\begin{equation*}
+        \begin{pmatrix}
+        1 & x \\ 
+        0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        u & 0 \\ 
+        0 & u^{-1}
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 \\ 
+        x & 1
+    \end{pmatrix}=
+    \begin{pmatrix}
+        u+xyu^{-1} & xu^{-1} \\ 
+        u^{-1}y & u^{-1}
+    \end{pmatrix}
+\end{equation*}
+But observe that 
+\begin{equation*}
+    \begin{pmatrix}
+        0 & -1 \\ 
+        1 & 0
+    \end{pmatrix}
+    \in K.
+\end{equation*}
+But this is not of the form above.
+\par\textbf{(2)}\\
+
+\begin{equation*}
+    K_n = 1+\varpi^n\Mat_{2\times 2}(\mathcal{O}_F).
+\end{equation*}
+Take $G= \GL_2$ and we have ,
+\begin{equation*}
+    B = \begin{pmatrix}
+        \ast & \ast \\ 
+        0 & \ast
+    \end{pmatrix},
+    N = \begin{pmatrix}
+        1 & \ast \\ 
+        0 & 1
+    \end{pmatrix},
+    \overline{N} = \begin{pmatrix}
+        1 & 0 \\ 
+        \ast & 1
+    \end{pmatrix}
+    T = \begin{pmatrix}
+        \ast & 0 \\ 
+        0 & \ast
+    \end{pmatrix}
+\end{equation*}
+Then we have for $p_{ij}\in\varpi^n\mathcal{O}_F$, 
+\begin{equation*}
+    \begin{pmatrix}
+        1+p_{11} & p_{12} \\ 
+        p_{21} & 1+p_{22}
+    \end{pmatrix}
+\end{equation*}
+We have,
+\begin{equation*}
+    K_r\cap N_0 = \left\{\begin{pmatrix}
+        1 & x\\
+        0 & 1
+    \end{pmatrix}
+    \bigg{|}x\in\mathfrak{p}^r\right\}, K_r\cap \overline{N}_0 = \left\{\begin{pmatrix}
+        1 & 0\\
+        x & 1
+    \end{pmatrix}
+    \bigg{|}x\in\mathfrak{p}^r\right\},
+\end{equation*}
+and also,
+\begin{equation*}
+   K_r\cap M_0 = \left\{\begin{pmatrix}
+        1+t_1 & 0\\
+        0 & 1+t_2
+    \end{pmatrix}
+    \bigg{|}t_1,t_2\in\mathfrak{p}^r\right\}.
+\end{equation*}
+Thus we have,
+\begin{equation*}
+    \begin{pmatrix}
+        1 & x\\
+        0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1+t_1 & 0\\
+        0 & 1+t_2
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0\\
+        y & 1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1+t_1+xy+xyt_2 & x+xt_2\\
+        y+yt_2 & 1+t_2
+    \end{pmatrix}
+\end{equation*}
+Thus this gives an isormophism by 
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 0\\
+        0 & 1
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        p_{11} & p_{12}\\
+        p_{21} & p_{22}
+    \end{pmatrix}
+    \mapsto
+    \begin{pmatrix}
+        1 & {\frac {p_{12}} {1+p_{22}}}\\
+        0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1+p_{11}-{\frac {p_{21}} {1+p_{22}}}p_{12} & 0\\
+        0 & 1+p_{22}
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0\\
+        {\frac {p_{21}} {1+p_{22}}} & 1
+    \end{pmatrix}
+\end{equation*}
+
+\par\textbf{Exercise 3}
+Take $E/F$ t obe a non-trivial extension. Take 
+\begin{equation*}
+    \G = \Res_{E/F}\G_{m,E}:R/F\mapsto (R\tens{F}E)^\times.
+\end{equation*}
+Then we have,
+\begin{equation*}
+    \G\tens{F}E = G_{m,E}^{[E:F]},
+\end{equation*}
+if $\G$ is split then 
+\begin{equation*}
+    \G = \G_{m,F}^n
+\end{equation*}
+bt we have,
+\begin{equation*}
+    \G(F) = E^\times \not = (F^\times)^n=(\G_{m,F})(F).
+\end{equation*}
+\par\textbf{(b)}
+Take $F=\Q_p$ and $u\in\Z_p\backslash(\Z_p)^2$. Then, a $\Q_p$ algebra $D$ with basis $\{1,i,j,k\}$ such that 
+\begin{equation*}
+    D i^2 = p, j^2 = u, ij=-ji=k,
+\end{equation*}
+easy to see that $D/\Q_p$ is $4$-dimensional. Consider, $\GL_1(D) = D^\times$.
+\begin{remark}
+    If we base change $D$ as follows, we get,
+    \begin{equation*}
+        D\tens{\Q_p}\overline{\Q_p}\stackrel{\sim}{to}\Mat_{2\times 2}(\overline{Q}_p),
+    \end{equation*}
+    such that 
+    \begin{align*}
+        i\mapsto & \begin{pmatrix}
+            \sqrt{p} & 0 \\
+            0 & -\sqrt{p}
+        \end{pmatrix},
+        j\mapsto & \begin{pmatrix}
+            0 & 1 \\
+            1 & 0
+        \end{pmatrix},
+        k\mapsto & \begin{pmatrix}
+            0 & \sqrt{p}  \\
+            -u\sqrt{p}& 0
+        \end{pmatrix},
+        1\mapsto & I_2
+    \end{align*}
+\end{remark} 
+Thus $\GL_1(D)$ is reductive $(\overline{Q}_p\tens{\Q_p}\GL_1(D)\cong \GL_2(\overline{\Q}_p))$.We also have,
+\begin{equation*}
+    \SL_1(D) = [\GL_1(D),\GL_1(D)].
+\end{equation*}
+\begin{claim}
+$\SL_1(D)(\Q_p)$ is compact.
+\end{claim}
+\begin{proof}
+Indeed $D$ has a unique maximal order lattice generate the algebra? %later)
+\begin{equation*}
+    \Ouv_D = \Z_p[i,j,k]\subset D,
+\end{equation*}
+and
+\begin{equation*}
+    \SL_1(D)(\Q_p) \subseteq \Ouv_D^\times
+\end{equation*}
+Suppose $x$ is in the left hand side, its characteristic polynomial is $T^2-tr(x)T+\det(x) = 0$.  So $x$ is integral thus $x$ is contained in some maximal order $X\in\Ouv_D$.
+\end{proof}
+From the claim, we have,
+\begin{equation*}
+    \SL_1(D) = M,
+\end{equation*}
+contains no split torus.
+\par\textbf{Exercise 4}
+Given a smooth $H$-representation $(\pi,V)$, we have,
+it is finite if and only if for any compact open subgroup $K\subseteq H$ and any vector $v\in V$, we have,
+\begin{equation*}
+    \supp(H\ni g\mapsto e_K(gv)),
+\end{equation*}
+is compactly supported.
+\begin{proof}
+$\Leftarrow$, let $\tilde{\lambda}\in\tilde{V}$, and $v\in V$, such that $\tilde{\lambda} = e_K\lambda$. for some $K\subset H$. compact open. We have,
+\begin{equation*}
+    \tilde{\lambda}(g,v) = (e_K\tilde{\lambda})(gv) = \tilde{\lambda}(e_K(gv)).
+\end{equation*}
+which is also compatly supported. Thus for $v\in V$ and $K\subseteq H$ compact open we have for a subgroup,
+\begin{equation*}
+    V_1 = Hv, \tilde{V}\twoheadrightarrow\tilde{V}_1,
+\end{equation*}
+thus $\tilde{V}_1$ is finite. Since $V_1$ is finite and finitely generated $V_1$ is admissible. In other words, $\tilde{V}^K$ is finite dimensional with some basis $\lambda_1,\cdots,\lambda_n$. Consider,
+\begin{equation*}
+    \supp(H\ni g\mapsto e_K(gv)).
+\end{equation*}
+If $e_K(gv)$ is not $0$ then there exists some $\lambda_9(e_K(gv))\not=0$. Thus we have,
+    \begin{equation*}
+    \supp(H\ni g\mapsto e_K(gv))\subseteq\bigcup_{i=1}^n\supp m_{\tilde{\lambda}_i,v}.
+\end{equation*}
+$\tilde{\lambda_i}$ is the image of $\lambda_i$ along $\tilde{V}\twoheadrightarrow\tilde{V}_1$.
+\end{proof}
+\par\textbf{Exercise 5}
+Suppose $V\in\Rep(H)$ which is irreducible and finite. we have, 
+\begin{center}
+    \begin{tikzcd}
+V_1 \arrow[r, hook] \arrow[d, "f"'] & V_2 \arrow[ld, "\tilde{f}", dotted] &                          & V \arrow[d] \arrow[ld, "\tilde{f}"', dotted] \\
+V                                   &                                     & V_1 \arrow[r, two heads] & V_2                                         
+\end{tikzcd}
+\end{center}
+We have,
+\begin{equation*}
+    \Rep(H) \cong \Rep(H)^\pi\times \Rep(H)_\pi.
+\end{equation*}
+Thus we get,
+\begin{equation*}
+    W \cong W^\pi\oplus W_\pi.
+\end{equation*}
+Where 
+\begin{equation*}  
+    W^\pi\cong \bigotimes_{I}(\pi,V).
+\end{equation*}
+Since we have 
+\begin{center}
+    \begin{tikzcd}
+V_1 \arrow[d, "\iota"'] \arrow[r, "\cong"] & V_1^\pi\oplus(V_1)_\pi \arrow[d] \arrow[d, "{\iota^\pi,\iota_\pi}"'] \\
+V_2 \arrow[r, "\cong"']                    & V_2^\pi\oplus(V_2)_\pi                                              
+\end{tikzcd}
+\end{center}
+And we have,
+\begin{equation*}
+    \Hom_H((V_1)_\pi,V) = 0.
+\end{equation*}
+Without the loss of generality, we can assume that 
+\begin{equation*}
+    V_i\cong \otimes_{J_i}V.
+\end{equation*}
+Since $V_2$ is semisimple ,we have,
+
+\begin{equation*}
+    V_2\cong V_1\oplus W.
+\end{equation*}
+\begin{center}
+    \begin{tikzcd}
+V_1 \arrow[d, "f"'] \arrow[r, hook] & V_1\oplus W \arrow[d, "\pr_1"] \arrow[r, "\cong"] & V_2 \\
+V                                   & V_1 \arrow[l, "f"]                                &    
+\end{tikzcd}
+\end{center}
+For the second part we have,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & K \arrow[r] & V_1 \arrow[r] & V_2 \arrow[r] \arrow[l, "r", bend left=49] & 0
+\end{tikzcd}
+\end{center}
+Thus set $\tilde{f} = r\circ f$, and get,
+\begin{center}
+    \begin{tikzcd}
+              & V \arrow[ld, "\tilde{f}"'] \arrow[d] \\
+V_1 \arrow[r] & V_2                                 
+\end{tikzcd}
+\end{center}
+\begin{theorem}
+    $e^\pi:\Rep(H)^\pi\to\Rep(H)$ is left and right adjoint thus $e^\pi$ is exact.
+\end{theorem}
+\begin{proof}
+    Let $X\in\Rep(H)^\pi$, then $X$ is injective/projective in $\Rep^\pi(H)$ if and only if $X$ is injective/projective in $\Rep(H)$. That is to say 
+    \par $X$ is injective in $\Rep(H)$ if and only if $\Hom_{\Rep(H)}(\cdot, X)= \Hom_{\Rep(H)^\pi}(e^\pi(\cdot),X)$ is exact if and only if $\Hom_{\Rep(H)^\pi}(\cdot, X)$ is exact.
+\end{proof}
+\begin{corollary}
+    All finite dimensional $H$-representations are injective and projective.
+\end{corollary}
+\par\textbf{Exercise 6}
+\par\textbf{(a)}
+The isomorphism is given by 
+\begin{equation*}
+    f\mapsto (f(g))_{[g]}.
+\end{equation*}
+This is indeed well-defined since 
+\begin{equation*}
+    gkg^{-1}\in N\cap gKg^{-1}(k\in K).
+\end{equation*}
+We then have,
+\begin{equation*}
+    gkg^{-1}f(g) \stackrel{\text{left $N$ invariance}}{=} f(gk) \stackrel{\text{$f$ right $K$ invariant}}{=} f(g)
+\end{equation*}
+$f$ is compactly supported thus only finitely many double cosets contained in $\supp(f)$ Clearly it is $K$ invariant. Consider 
+\begin{equation*}
+    \bigoplus_{N\backslash W/ K}W^{N\cap gKg^{-1}}\ni(w_g)_g\mapsto (ngk\mapsto n w_g)\in(c-\Ind_M^H\pi)^K
+\end{equation*}
+This is well-defined. Get a compactly supported funtion as $N\backslash \supp()$ is contained in finitely many right $K$-cosets.
+\begin{equation*}
+    ngk = n'gk'
+\end{equation*}
+where $g$ are of the fixed representatives of $N\backslash H/K$. Then 
+\begin{equation*}
+    n = n'gk'k^{-1}g^{-1}\in N\cap g Kg^{-1}.
+\end{equation*}
+So $nw_g = n'w_g$. Easy to see that these are mutually inverse.
+\par\textbf{(b)}
+$(\pi,W)$ admits $N\backslash H$ compact, $c-\Ind_N^H\pi$ is admissible.
+\begin{proof}
+    \begin{align*}
+        (c-\Ind_N^H\pi)^K & = \bigoplus_{N\backslash H/K}\overbrace{W^{N\cap gKg^{-1}}}^{\text{finite dimensional}}.
+    \end{align*}
+    Furthermore, we have $N\backslash H/K$ is finite thus it is admissible.
+\end{proof}
+\par\textbf{(c)}
+Both $\Ind,c-\Ind$ are both exact functor from $\Rep(N)$ to $\Rep(H)$.
+\begin{proof}
+    It suffices to show that for $K$ compact open subgroup we have,
+    \begin{equation*}
+        (c-\Ind_N^H)^K, (\Ind_N^H)^K
+    \end{equation*}
+    are both exact. But 
+    \begin{equation*}
+    (c-\Ind)^K = \bigoplus_{[g]\in N\backslash H/K}(\cdot)^{N\cap gKg^{-1}}, (\Ind)^K = \bigoplus_{[g]\in N\backslash H/K}(\cdot)^{N\cap gKg^{-1}},
+    \end{equation*}
+    are exact.
+\end{proof}
+\par\textbf{(d)}
+For $(\pi,W)$ irreducible, $N$ compact, $c-\Ind_N^H\pi$ irreducible then $c-\Ind_N^H\pi$ is finite.
+\begin{proof}
+    We have $\widetilde{c-\Ind_N^H\pi}$ is also irreducible and 
+    \begin{equation*}
+        (c-\Ind_N^H\pi)\otimes\widetilde{(c-\Ind_N^H\pi)}
+    \end{equation*}
+    is also irreducible $H\times H$ representation. Thus it suffices to find one non-zero matrix coefficient which is compactly supported since $(h_1,h_2)f = h^{-1}_1\supp(f)h_2$
+    \par Pick $v\in W$ and $\tilde{v}\in\tilde{V}$ such that $\tilde{v}(v)\not=0$. Define,
+    \begin{equation*}
+        f_v:H\to W, h\mapsto \begin{cases}
+            hv, h\in N,\\
+            0,\text{ otherwise}.
+        \end{cases}
+    \end{equation*}
+    and also,
+    \begin{equation*}
+        (f_{\tilde{v}}:c-\Ind_N^HW\ni \varphi\mapsto \tilde{v}(\varphi(1)))\in \widetilde{(c-\Ind_N^H W)}.
+    \end{equation*}
+    Then $f_{\tilde{v}}(f_v) = \tilde{v}(v)\not=0$, we conclude,
+    \begin{equation*}
+        m_{f_{\tilde{v}}f_v}(g) = \begin{cases}
+            gv,g\in N\\
+            0\text{ oterwise}.
+        \end{cases}
+    \end{equation*}
+    We have $\supp(m_{f_{\tilde{v}}f_v})\subseteq N$ which is compact.
+\end{proof}
+\par\textbf{(e)}
+\begin{equation*}
+    \End(c-\Ind_K^H(\triv))\ni t\stackrel{\cong}{\mapsto} (\phi_t:H\ni g\mapsto t(e_K)(g)) \mathcal{H}(H,K),
+\end{equation*}
+The inverse is given by 
+\begin{equation*}
+    [t_\phi:f\mapsto(H\ni h\mapsto\sum_{g\in H/K}\phi(g)f(g^{-1}h))]\mapsfrom \phi.
+\end{equation*}
+\end{document}

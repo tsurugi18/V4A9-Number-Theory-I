@@ -1,0 +1,157 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 3}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)}\\
+\par\textbf{(a)}
+Observe that for any $n\in N$, we have,
+\begin{equation*}
+    v = \nu(n)^{-1}\pi(n)v-\nu(n)^{-1}(\pi(n)v-\nu(n)v).
+\end{equation*}
+For $\Leftarrow$, we see that 
+\begin{align*}
+    v = {\frac 1 {\vert N_K\vert }}\int_{N_K}vd\mu_N = \underbrace{{\frac 1 {\vert N_K\vert }}\int_{N_K}\nu(n)^{-1}\pi(n)vd\mu_N}_{=0}-{\frac 1 {\vert N_K\vert }}\int_{N_K}\nu(n)^{-1}(\pi(n)v-\nu(n)v)d\mu_N.
+\end{align*}
+Thus $v\in V_\nu$.
+
+\par\textbf{(b)}
+The functor preserves injectivity since for any $\varphi:(\tau,U)\to (\pi,V)$ a morphism of $N$-representation commutes with $\tau,\pi$ by definition and $\nu$ as it is $\C$-linear.
+Since taking a quotient vector space is right-exact, this completes the proof.
+
+\par\textbf{(c)}
+
+Since $(\cdot)_\nu$ is exact, the injectivity is clear. In $V(N)_\nu$, each representative is of the form,
+\begin{equation*}
+    \nu(n)v-v
+\end{equation*}
+for some $n\in N$.
+
+We also have,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & V(N) \arrow[r] \arrow[d] & V \arrow[r] \arrow[d] & V_N \arrow[r] \arrow[d] & 0 \\
+0 \arrow[r] & V(N)_\nu \arrow[r]       & V_\nu \arrow[r]       & (V_N)_\nu \arrow[r]     & 0
+\end{tikzcd}
+\end{center}
+as $(\cdot)_\nu$ is exact. Note that $N$ acts trivially on $V_N$, thus elements of $(V_N)_\nu$ is of the form,
+\begin{equation*}
+    v-\nu(n)v,
+\end{equation*}
+which is in $V(N)_\nu$. Thus we conclude $V(N)_\nu\to V_\nu$ is an isomorphism.
+
+\par\textbf{(d)}
+
+By considering a trivial character $\nu$, we obtain,
+\begin{equation*}
+    V(N)= V(\nu).
+\end{equation*}
+
+From \textbf{(a)}, we have,
+
+\begin{equation*}
+    V(N) = V(\nu) = \{v\in V\:|\: \exists K_N\text{ open compact, subgroup}, e_{K_N}v = 0\}.
+\end{equation*}
+
+\par\textbf{(2)}
+\par\textbf{(a)}
+Let $v\in V\backslash\{0\}$, consider
+\begin{equation*}
+    W = \Span_\C{\pi(g)v\:|\:g\in N}.
+\end{equation*}
+Then this is irreducible representation. Thus the subrepresentation $(\pi,W)$ has a central character $\nu$. This extends to $(\pi,V)$. Then the character $-\nu$, $v\not\in V(-\nu)$.
+\par\textbf{(b)}
+From the first part and considering the exact sequences,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & V(N) \arrow[r] \arrow[d] & V \arrow[r] \arrow[d] & V_N \arrow[r] \arrow[d] & 0 \\
+0 \arrow[r] & V(N)_\nu \arrow[r]       & V_\nu \arrow[r]       & (V_N)_\nu \arrow[r]     & 0
+\end{tikzcd}
+\end{center}
+we have,
+\begin{equation*}
+    V(N)\simeq V.
+\end{equation*}
+Note that $N=\G_a$ thus $N=Z(N)$. From this, observe that $V$ has a central character, namely the trivial representation from the exercise 1. But $V_\nu=0$ tells that $V$ also has a central character which is $\nu$. But $\nu\not=\triv$, thus we conclude $V=\{0\}$.
+\end{document}

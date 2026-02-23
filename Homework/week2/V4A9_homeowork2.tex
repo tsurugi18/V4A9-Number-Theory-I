@@ -1,0 +1,217 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\tr}{tr}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\mes}[1]{\vert #1 \vert}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 2}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\textbf{Exercise (1)}
+Let $v\in W^\perp$, then for any $w\in W$ and $g\in H$,,
+\begin{equation*}
+    (\pi(g)v,w) = (v,\pi(g^{-1})w) = 0,
+\end{equation*}
+since $W$ is a subrepresentation. Thus $W^\perp$ is a subrepresentation. 
+\par Consider a compact open subgroup $K$ and $V^K$. Since this is admissible, we know $V^K$ is finite dimensional and $W^K$ and $W^{\perp,K}$ are subspaces. 
+We have 
+\begin{equation*}
+    V^K = W^K\oplus (W^K)^\perp\cap V^K.
+\end{equation*}
+and clearly,
+\begin{equation*}
+    (W^K)^\perp\cap V^K\supseteq (W^\perp)^K.
+\end{equation*}
+Let $v\in (W^K)^\perp\cap V^K$, then there exists $v'\in (W^K)^\perp$ such that 
+\begin{equation*}
+    e_Kv' = v.
+\end{equation*}
+Take an arbitrary element $w\in W$, since a positive definite bilinear form restricted to some subspce is still positive definite, we observe,
+\begin{align*}
+    \langle v, w\rangle & = \langle e_Kv',w\rangle,\\
+    & = \left\langle {\frac 1 {\mes{K}}}\int_K \pi(g)v'dg,w\right\rangle,\\
+    & = \langle v',e_Kw\rangle,\\
+    & = 0.
+\end{align*}
+The last part follows from that $e_Kw\in W^K$. Here I used the $H$-invariance and the property of Haar measure, together with $K$ being compact. Thus we conclude $v\in (W^\perp)^K$.
+\par We now have $V^K = W^K\oplus (W^\perp)^K$. We conclude $V = W\oplus W^\perp$.
+\par\textbf{Exercise (2)}
+Recall that $V_1,V_2$ are irreducible, so is $V_1\otimes V_2$. $V_1\otimes V_2$ consists of basis of the form 
+\begin{equation*}
+    v_1\otimes v_2
+\end{equation*}
+where $v_1\in V_1,v_2\in V_2$. A subspace fixed by a compact subgroup $K_1\times K_2$ is, for $k_1\in K_1,k_2\in K_2$,
+\begin{equation*}
+    (\pi_1\otimes\pi_2)(k_1,k_2)v_1\otimes v_2 = (\pi_1(k_1)v_1)\otimes (\pi_2(k_2)v_2).
+\end{equation*}
+Therefore, we have,
+\begin{equation*}
+    (V_1\otimes V_2)^{K_1\times K_2} = V_1^{K_1}\otimes V_2^{K_2}.
+\end{equation*}
+In particular, if $V_1,V_2$ are admissible so is $V_1\otimes V_2$. 
+\par Admissible and irreducible representations have their contragredient representations again admissible and irreducible. 
+To see this observe, let $W$ be a subrepresentation of $\tilde{V}$ then we have 
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & W \arrow[r] & \tilde{V} \arrow[r] & \tilde{V}/W \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+as vectorspaces. Using $V$ is admissible, and taking contragredient is a contravariant exact functor, we have 
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & \widetilde{\tilde{V}/W} \arrow[r] & \tilde{\tilde{V}} \arrow[r] & \tilde{W} \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+Since $V$ is irreducible, one of the arrows has to be isomorphism.\\
+\par For our case, $\widetilde{V_1\otimes V_2}$ is admissible and irreducible since $V_1\otimes V_2$ is.
+$\tilde{V_1},\tilde{V_2}$ are admissible and irreducible so is $\tilde{V_1}\otimes\tilde{V_2}$.
+\par The map 
+\begin{equation*}
+    \lambda_1\otimes \lambda_2\mapsto[v_1\otimes v_2\mapsto \lambda_1(v_1)\lambda_2(v_2)]
+\end{equation*}
+is a morphism of $H$-representations which is not $0$. By Schur's lemma, we have they are isomorphic.\\
+\textbf{(3)}\\
+\par\textbf{(a)}Since for the trace function in $\Mat_{n\times n}(\C)$, we have for any $A,B\in\Mat_{n\times n}(\C)$, $\tr(AB) = \tr(BA)$.
+From this and $\pi(g)\in\GL(V)$ where $V$ is finite dimensional, we have 
+\begin{equation*}
+    \tr(\pi(g^{-1})\pi(h)\pi(g)) = \tr(\pi(h)\pi(g)\pi(g^{-1})) = \tr(\pi(h)).
+\end{equation*}
+\par\textbf{(b)}Without loss of generality, we assume $V$ has a basis $\{b_1,\cdots,b_n\}$. Since $V$ is finite dimensional we have $V=\bigoplus_{i=1}^k V_i$ for some irreducible subrepresentations. 
+On each subrepresentation, since it is irreducible and finite, there exists a Hermitian matrix $A_i$ which corresponds to a positive-definite, $H$-invariant Hermitian form. 
+Let us define a positive definite Hermitian matrix $A$ to be such that 
+\begin{equation*}
+    A \defeq \begin{pmatrix}
+        A_1&O&\cdots&O\\
+        O&A_2&\cdots&O\\
+        \vdots & \vdots & \ddots &\vdots\\
+        O&O&\cdots&A_k
+    \end{pmatrix}.
+\end{equation*}
+Thus we conclude $(\pi,V)$ is unitary. In the proof for the existence of the formal degree of irreducible and finite representations, 
+the irreducibility was used to prove the admissibility and the unitariness of the contragredient representations besides that for a bilinear operator $f:V\times \tilde{V}\to\C$, there is $c$ such that 
+\begin{equation*}
+f(v,\lambda) = c\lambda(v).
+\end{equation*}
+However, $V$ is of finite dimension, thus $\tilde{V}$ is also finite dimensional. Thus its contragredient is admissible. 
+Since we have 
+\begin{equation}
+    V = \bigoplus_{i=1}^k V_i.
+\end{equation}
+For any $v\in V$, and $\lambda\in V^*$, we get 
+\begin{equation*}
+    v = v_1\oplus\cdots\oplus v_k,\quad \lambda = \lambda_1\oplus\cdots\oplus\lambda_k.
+\end{equation*}
+Therefore,
+\begin{equation*}
+    m_{\lambda,v}(g) = \sum_{i=1}^k\lambda_i(\pi(g)v_i).
+\end{equation*}
+By using Schur's orthogonality, we get 
+\begin{equation*}
+    \int_H m_{\lambda,v}(g)m_{\mu,u}(g^{-1})dg = \sum_{i=1}^k{\frac 1 {\deg(V_i)}}\lambda_i(u_i)\mu_i(v_i).
+\end{equation*}
+Thus $(\pi,V)$ admits a formal degree.\\
+\par Furthermore, $V^*=\tilde{V}$ since there exists a compact open subgroup set $K$ such that $V=V^K$ . This follows from that 
+each basis element is contained in some $V^{K_i}$. By taking the intersection of $K_i$ and using $H$ is Hausdorff, we conclude $K=\bigcap_{i} K_i$ is again a compact and open subgroup
+which fixes all the basis elements, so does any elements. We see $V^* = (V^*)^K$ for such $K$.\\
+\par Take $\lambda\in V^*$ to be such that it maps each basis element to $1$. Thus we have 
+\begin{equation*}
+    \deg(V)\int_H m_{\lambda,\sum_{i=1}^n b_i}m_{\lambda,b_1}dg = \lambda(b_1+\cdots+b_n)\lambda(b_1)\dim(V).
+\end{equation*}
+Thus scaling $dg$ by $\int_H m_{\lambda,\sum_{i=1}^n b_i}m_{\lambda,b_1}$, we obtain the statement.
+\par \textbf{(4)}
+Let $f_1,f_2\in\mathcal{H}$, then 
+\begin{equation*}
+    \tau(f_1+f_2)w = \tau(f_1)w+\tau(f_2)w,
+\end{equation*}
+by the linearity of integrals. Now consider $f_1\ast f_2$, indeed, we have 
+\begin{align*}
+    \int_H (f_1\ast f_2)(h)\tau(h)wdh &= \int_H\int_H f_1(g)f_2(g^{-1}h)\tau(h)wdgdh.
+\end{align*}
+Substitute $h\to gh$ and use the property of Haar measure, we have,
+\begin{align*}
+    \int_H (f_1\ast f_2)(h)\tau(h)wdh &= \int_H\int_H f_1(g)f_2(h)\tau(gh)wdgdh,\\
+    &= \int_H f_2(h)\tau(h)\int_H f_1(g)\tau(g)wdgdh,\\
+    & = \tau(f_2)\tau(f_1)w.
+\end{align*}
+For the $H\times H$ equivariance, we have using the property of Haar measure again,
+\begin{align*}
+    \tau((h_1,h_2)f(g))w & = \tau(f(h_1^{-1}gh_2))wdg, \\
+    & = \int_H f(h_1^{-1}gh_2)\tau(g)wdg,\\
+    & = \int_H f(g)\tau(h_1gh_2^{-1})wdg, \\
+    & = \tau(h_1)\tau(f)\tau(h_2^{-1})w.
+\end{align*}
+\end{document}

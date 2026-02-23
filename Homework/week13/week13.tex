@@ -1,0 +1,290 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\nr}{nr}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+\newcommand{\conj}[2]{\prescript{#1}{}{#2}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 10}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+
+\par\textbf{1.}
+Clearly if all $\phi_i\in Z(\hecke(G,G^\circ,\pi^\circ))$ then $\phi\in Z(\hecke(G,G^\circ,\pi^\circ))$. Let $\{\phi_1,\cdots,\phi_n\}$ be elements of $\hecke(G,G^\circ,\pi^\circ)$ such that supported in $x_iG^\circ$ and
+\begin{equation*}
+    \{\phi_1^{e_1}\ast\cdots\ast\phi_n^{e_n}\sep e_1,\cdots,e_n\in\Z\}
+\end{equation*}
+forms the basis of the Hecke algebra. By assumption, we have,
+\begin{equation*}
+    \phi\ast\phi_k = \phi_k\ast\phi,
+\end{equation*}
+for all $k=1,\cdots,n$. But we have,
+\begin{equation*}
+    \phi\ast\phi_k = \sum_{i=1}^r \phi_i\ast\phi_k = \sum_{i=1}^r c_{ik}\phi_k\ast\phi_i =\sum_{i=1}^r \phi_k\ast\phi_i.
+\end{equation*}
+As they are basis we have $c_{ik}=1$. Thus the statement is proven.
+
+\par\textbf{2.}
+
+The map 
+\begin{equation*}
+    [tG^\circ]\mapsto\varphi_{[t^{-1}]},
+\end{equation*}
+respects the addition furthermore for $x\in stG^\circ$, $s^{-1}x\in tG^\circ$ therefore,
+\begin{equation*}
+    [stG^\circ]\mapsto \varphi_{[t^{-1}s^{-1}]}=[x\mapsto\sigma_T(s)\sigma_T(s^{-1}x)] = \varphi_{[s^{-1}]}\ast\varphi_{[t^{-1}]}.
+\end{equation*}
+
+Therefore this is an algebra homomorphism. The algebra $\C[T/G^\circ]$ is well-defined by Lemma 95 from the lecture. Remains to show that $\{\varphi_{[t^{-1}]}\}_{t\in T/G^\circ}$. From Lemma 70 and and the construction in the proof, $\{\phi_{[t^{-1}]}\}_{t\in T/G^\circ}$ is a generator of the algebra. Thus we have a one-to-one correspondence between generators, this induces an isomorphism.
+
+\par\textbf{3.}
+\par\textbf{(a)}
+First we have $(gk)K(gk)^{-1}=gKg^{-1}$. Let $\phi\in\Hom_{K\cap gKg^{-1}}(\prescript{g}{}{\rho},\rho)$ then set 
+\begin{equation*}
+    \phi'\defeq \phi\circ\rho(k).
+\end{equation*}
+Then we have,
+\begin{align*}
+    \phi'(\prescript{gk}{}{\rho}(x)(w)) & = \phi(\prescript{g}{}{\rho}(x)\rho(k)(w)),\\
+    & = \rho(x)\phi(\rho(k)(w)),\\
+    & = \rho(x)\phi'(w).
+\end{align*}
+Similarly, for $\phi\in \Hom_{K\cap gKg^{-1}}(\prescript{g}{}{\rho},\rho)$, set
+\begin{equation*}
+    \phi'\defeq\rho(k)\circ\phi.
+\end{equation*}
+Then we have,
+\begin{align*}
+    \phi'(\rho^{kg}(h)(w))& = \rho(k)\circ\phi(\rho^{g}(k^{-1}hk)(w)),\\
+    & = \rho(k)\rho(k^{-1}hk)\circ\phi(w),\\
+    & = \rho(h)\phi'(w).
+\end{align*}
+\par\textbf{(b)}
+\begin{remark}
+    Two characters intertwines if and only if they are the same.
+\end{remark}
+Suppose $g$ intertwines $\psi$ if and only if there is $f:\C\to\C$ linear such that 
+\begin{equation*}
+    f(\psi(g^{-1}xg)(v)) = \psi(x)f(v).\Leftrightarrow\psi(g^{-1}xg)=\psi(x)
+\end{equation*}
+holds on $x\in ZI_1\cap gZI_1g^{-1}$. From previous part, we would like to look at the representatives of $I_1\backslash \SL(F)/I_1$. Note that we have,
+\begin{equation*}
+    \SL_2(F)=\bigsqcup_{w\in N_G(T)/T\cap I}IwI
+\end{equation*}
+where 
+\begin{align*}
+    T &= \left\{\begin{pmatrix}
+        a &\:\\
+        \: & a^{-1}
+    \end{pmatrix}
+    \Bigg{|}\:a\in F^{\times}\right\}\\,I\cap T& = \left\{\begin{pmatrix}
+        a &\:\\
+        \: & a^{-1}
+    \end{pmatrix}
+    \Bigg{|}\:a\in \mathcal{O}_F^\times\right\}, \\N_G(T)&=\left\{\begin{pmatrix}
+        a &\:\\
+        \: & a^{-1}
+    \end{pmatrix},
+    \begin{pmatrix}
+        \: & a \\
+        -a^{-1} &\:
+    \end{pmatrix}
+    \Bigg{|}\:a\in F^{\times}\right\},\\\tilde{W} &= \left\{\begin{pmatrix}
+        \varpi^k &\:\\
+        \: & \varpi^{-k}
+    \end{pmatrix},
+    \begin{pmatrix}
+        \: & \varpi^{k} \\
+        -\varpi^{-k} &\:
+    \end{pmatrix}
+    \Bigg{|}\:k\in\Z\right\}.
+\end{align*}
+As $I$ is a preimage of $B(k_F)$, we have 
+\begin{equation*}
+    \SL_2(\mathcal{O}_F)=K\stackrel{r}{\to}\SL_2(k_F),
+\end{equation*}
+We then have,
+\begin{align*}
+    I&\defeq r^{-1}(B(k_F)),\\
+    I_1&\defeq r^{-1}(U(k_F)),\\
+    I/I_1 &\cong B(k_F)/U(k_F)=T(k_F).\\
+    T(\mathcal{O}_F)&\to T(k_F).
+\end{align*}
+Note that we have,
+\begin{equation*}
+    I = \bigcup_{t,\text{diagonal}}I_1tI_1,IwI = \bigcup_{t}I_1wtI_1.
+\end{equation*}
+Thus we need to check 
+\begin{equation*}
+    g = \begin{pmatrix}
+        m & \:\\
+        \: & m^{-1}
+    \end{pmatrix},\begin{pmatrix}
+        \: & m\\
+        -m^{-1}&\:
+    \end{pmatrix}
+\end{equation*}
+We only show the case for the latter. Consider $x\in g^{-1}ZI_1g$, such that 
+\begin{equation*}
+    g^{-1}xg = \begin{pmatrix}
+    1 & 0\\
+    -m^{2}b & 1
+    \end{pmatrix}\in ZI_1.
+\end{equation*}
+This means that $\val(m^{-2}b) = 1$, thus $\val(b)>2\val(m)+1$. We have,
+\begin{equation*}
+    \varpi(-\varpi^{-1}m^{-2}b).
+\end{equation*}
+Therefore,
+\begin{equation*}
+    \psi(g^{-1}xg)=\phi(x)\Leftrightarrow\forall b\in\mathcal{O}_F, \val(m^{-2}b)\geq1\Leftrightarrow\val(\varpi^{-1}m^{-2}b)\geq0\psi(\overline{b}) = \phi(\overline{-\varpi^{-1}m^{-2}b})
+\end{equation*}
+Suppose $\val(m)=n$ and $2n+1>0$. Thus the valuation of $b$ is positive thus $\psi(\overline{b})=1$. Take $b_0$ be such that $\psi(\overline{b}_0)\not=0$, we have $b=-\varpi m^2b_0$ is a counter example.
+\par If $2n+1<0$, then $b\in\mathcal{O}_F$. Therefore,
+\begin{equation*}
+    \psi(\overline{\varpi^{-1}m^2b})=1.
+\end{equation*}
+Take $b_0$ be such that $\psi(b_0)\not=1$, we will have a contradiction.
+\par\textbf{(c)}
+From Homework 6 (b), if $K$ is an ope group compact modulo center of $G$ and $\psi$ is irreducible we have, $\cind_K^G\psi$ is irreducible implies it is supercuspidal. The strategy is to use  the Schur's lemma 
+\begin{equation*}
+    \End_{G}(\cind_{ZI_1}^G(\psi))=\C.
+\end{equation*}
+The above isomorphism holds if and only if $\psi$ is irreducible under the assumption it is unitary. From previous arguments, we have,
+\begin{equation*}
+    \Hom_G(\cind_{ZI_1}^G(\psi),\Ind_{ZI_1}^G(\psi))\cong \prod_{ZI_1\backslash G/ ZI_1}[\Hom_{ZI_1\cap g^{-1}(ZI_1)g}(\prescript{g^{-1}}{}{\psi},\psi)]
+\end{equation*}
+From previous argument, we have 
+\begin{equation*}
+    \dim \Hom_{ZI_1\cap g^{-1}(ZI_1)g}(\prescript{g^{-1}}{}{\psi},\psi)=\begin{cases}
+        1,\quad(g\in ZI_1),\\
+        0,\quad(\text{otherwise}).
+    \end{cases}
+\end{equation*}
+Since $\End_G(\cind_{ZI_1}^G(\psi))$ can be embedded to $\Hom_G(\cind_{ZI_1}^G(\psi),\Ind_{ZI_1}^G(\psi))$, and the latter is one dimensional the former has to be one dimensional.
+\begin{remark}
+    Let $\pi$ be an irreducible representation of $G$ and $(\pi^\circ,W)\subseteq(\pi|_{G^\circ},V)$. Take,
+    \begin{equation*}
+        T\defeq\bigcap_{\chi\in X_{\nr}(G)_\pi}\ker(\chi)
+    \end{equation*}
+    Then we have,
+    \begin{equation*}
+        \bigcap_{\substack{\chi\in X_{\nr}(G)\\ \chi|_H=1}}\ker\chi=H = N_G(W) \subseteq N_G(\pi^\circ).
+    \end{equation*}
+    $T\subseteq H$. The key fact is that $\pi=\cind_H^G(\pi^\circ)$ and $\nu\in X_{\nr}(G)$, then,
+    \begin{equation*}
+        \pi\cdot\nu = \cind_H^G(\pi^\circ)\nu = \cind_H^G(\pi^\circ\nu|_H).
+    \end{equation*}
+    If $\nu|_H=1$, then $\nu\in X_{\nr}(G)_\pi$.
+\end{remark}
+\par\textbf{4.}
+Suppose $g$ intertwines $\rho$, then pick
+\begin{equation*}
+    \phi\in\Hom_{K\cap gKg^{-1}}(\prescript{g}{}{\rho},\rho).
+\end{equation*}
+Set,
+\begin{equation*}
+    f(h)=\begin{cases}
+        \rho(k_1)\circ\phi\rho(k_2)\quad(h=k_1gk_2),\\
+        0\quad(\text{otherwise}).
+    \end{cases}
+\end{equation*}
+This is well-defined and has a compact support by the equivalent condition about intertwining. For the other direction, suppose $f(g)=\phi\not=0$ then for $x\in K\cap gKg^{-1}$,
+\begin{align*}
+\rho(x^{-1})f(g)\rho(g^{-1}xg) & = f(x^{-1}gg^{-1}xg),\\
+& = f(g).\\
+\Rightarrow \rho(x)\phi & = \phi(\prescript{g}{}{\rho}(x)(w)).
+\end{align*}
+Thus $g$ intertwines $\rho$.
+\end{document}

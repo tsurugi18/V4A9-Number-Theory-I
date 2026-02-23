@@ -1,0 +1,326 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\nr}{nr}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+\newcommand{\conj}[2]{\prescript{#1}{}{#2}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 10}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\textbf{(1)}
+\par\textbf{(a)}
+Suppose $(\sigma,W)$ is unitary with inner product $\langle\cdot,\cdot\rangle$, we then define for $f_1,f_2\in\cind_{ZK}^G(\sigma)$, 
+\begin{equation*}
+    \int_{G/ZK} \langle f_1(g),f_2(g)\rangle dg.
+\end{equation*}
+This is well-defined as $f_1,f_2$ has compact support modulo $ZK$ and thus equivariance and positive-definiteness follows from unitaricity of $\sigma$. Remains to show that $\sigma$ is unitary.
+\par $k_F$ is finite, any representation of $\GL_2(k_F)$ is finite. Thus $\sigma$ viewed as a representation of $K$ is unitary by inheritting one from $\GL_2(k_F)$ as $\sigma$ is irreducible by assumption. By the assumption of the way we extended the representation, we conclude $(\sigma,W)$ is a semi-product of two unitary representations thus it is unitary.
+
+\par\textbf{(b)}
+Consider $\Hom_G(W,\Ind_{ZK}^G\sigma)$. Using Frobenius reciprocity, we have,
+\begin{equation*}
+    \Hom_G(W,\Ind_{ZK}^G\sigma)\cong \Hom_{ZK}(W|_{ZK},\sigma).
+\end{equation*}
+
+Since a restriction of unitary representation to a subgroup is still unitary, we have,
+\begin{equation*}
+    \Hom_{ZK}(W|_{ZK},\sigma)\cong \Hom_{ZK}(\sigma,W|_{ZK}).
+\end{equation*}
+
+Suppose $\begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix}$ has a determinant $1$.
+
+\begin{equation*}
+    \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & n\\
+        0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        d & -b\\
+        -c & a
+    \end{pmatrix}
+    = \begin{pmatrix}
+        a & na+b\\
+        c & nc+d
+    \end{pmatrix}
+    \begin{pmatrix}
+        d & -b\\
+        -c & a
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        -nac+1 & na^2\\
+        -nc^2 & nac+1
+    \end{pmatrix}
+\end{equation*}
+
+I couldn't solve the rest.
+\par\textbf{1.}
+\par\textbf{(a)}
+We have 
+\begin{equation*}
+    \pi:\Ouv_F\to\Ouv_F/\varpi\Ouv_K.
+\end{equation*}
+
+By the irreducibility of $\sigma$, we have $V\cong C^n$ for some $n\in\N$. Thus $(\sigma,V)$ is a unitary representation. 
+Given a character $\omega:k_F^\times\to\C^\times$. Note we have an exact sequence,
+\begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & K(1) \arrow[r] & \Ouv_F^\times \arrow[r] & k_F^\times \arrow[r] & 0
+\end{tikzcd}
+\end{center}
+where $K(1) = I_2+\varpi\Mat_{2\times 2}(\Ouv_F)$. Also note that 
+\begin{equation*}
+    F^\times = \bigcup_{i\in\Z}\varpi^i\Ouv_F^\times = (\Ouv_F^\times)^\Z.
+\end{equation*}
+
+Given a character $\chi:F^\times\to\C^\times$ such that $\chi(\varpi)=1$, we have 
+\begin{equation*}
+    \forall a\in F^\times, a= \varpi^iu,u\in\Ouv_F^\otimes.
+\end{equation*}
+Thus we define,
+\begin{equation*}
+    \chi(a) = \chi(u) = \omega(\overline{u}).
+\end{equation*}
+We now define,
+\begin{equation*}
+    \sigma:ZK\to\GL(V),
+\end{equation*}
+We now construct a Hermitian form on $\cind_{ZK}^{\GL_2(F)}(\sigma)$. 
+\begin{equation*}
+    \langle f_1,f_2\rangle \defeq \sum_{g\in ZK\backslash G}\langle f_1(g),f_2(g)\rangle.
+\end{equation*}
+This is well-defined that is it does not depend on the representative $g\in ZK\backslash G$. This is due to the equivariance of $\langle\cdot,\cdot\rangle$ under $ZK$-action.
+$ZK$ is open since it is the union $\bigcup_{z\in Z}zK$. As $K$ is open so is $ZK$. Furthermore $ZK\G$ is discrete. To see this every point is open in $G/H$ as every point has an open preimage namagely $g\in G/H$ then the preimage is $gH^{-1}$ which is open.
+Positive-definiteness is due to the positive definiteness of $\langle\cdot,\cdot\rangle$. 
+\par\textbf{(b)}
+\begin{equation*}
+    \Hom_\C(W,W) = \C\Leftrightarrow W \text{is irreducible}.
+\end{equation*}
+We have $W\hookrightarrow\Ind_{ZK}^G(V)$. Thus we have,
+\begin{equation*}
+    \Hom(W,W)\hookrightarrow\Hom_G(W,\Ind_{ZK}^G(V)).
+\end{equation*}
+Using Frobenius Reciprocity, we have,
+\begin{align*}
+    \Hom(W,W)\hookrightarrow\Hom_G(W,\Ind_{ZK}^G(V)) & = \Hom_{ZK}((\cind_{ZK}^G(V))|_{ZK},V),\\
+    & = \Hom_{ZK}\left(\bigoplus_{g\in ZK\backslash G/K}\cind_{ZK\cap g^{-1}ZKg}^{ZK}(\prescript{g}{}{\sigma})|_{ZK\cap \prescript{g}{}{ZK}},V\right),\\
+    & = \prod_{\overline{g}\in ZK\backslash G/K}\Hom_{ZK}(\cind_{ZK\cap \prescript{g}{}{ZK}}^{ZK}(\prescript{g}{}{\sigma}),V),\\
+    & = \prod_{\overline{g}\in ZK\backslash G/K}\Hom_{ZK\cap \prescript{g}{}{ZK}}(\prescript{g}{}{\sigma}|_{ZK\cap \prescript{g}{}{ZK}},V|_{ZK\cap\conj{g}{ZK}}).
+\end{align*}
+For $\overline{g} = \overline{e}$ in $ZK\backslash G/ZK$, then for $g\in ZK$, 
+\begin{equation*}
+    \Hom_{ZK}(V,V) =\C,
+\end{equation*}
+Suppose $\overline{g_1}=\overline{g_2}$. As $Z$ is the center we have $ZK\backslash G/K = K\backslash G/ZK$. Explicitly
+\begin{equation*}
+    z_1k_1gk_1' = z_2k_2g_2k_2\Rightarrow %\later
+\end{equation*}
+We have Cartan decomposition,
+\begin{equation*}
+    \GL_2(F) = K\Delta K, \Delta = \{\diag(\varpi^a,\varpi^b)\sep a,b\in\Z,a\leq b\}.
+\end{equation*}
+For $T\in\Hom_{ZK\cap \conj{g}{ZK}}(\cong{g^{-1}}{\sigma},\sigma), \sigma(h)T(v) = T(\sigma(ghg^{-1})v)$. Taking $h\in\N(k_F)$. That is 
+\begin{equation*}
+    g = \diag(\varpi^a,1),\begin{pmatrix}
+        1&x\\
+        \:&1
+    \end{pmatrix}\in ZK\cap\cong{g}{ZK}, x\in\Ouv_F.
+\end{equation*}
+
+\begin{equation*}
+    g^{-1}\underbrace{\begin{pmatrix}
+        1&\varpi^ax\\
+        \:&1
+    \end{pmatrix}}_{\in ZK}g=\underbrace{\begin{pmatrix}
+        1&x\\
+        \:&1
+    \end{pmatrix}}_{\in ZK}.
+\end{equation*}
+Take $h= \begin{pmatrix}
+        1&x\\
+        \:&1
+    \end{pmatrix}$ for $x\in\Ouv_F$, we get 
+    \begin{equation*}
+        ghg^{-1} = \begin{pmatrix}
+        1&\varpi^ax\\
+        \:&1
+    \end{pmatrix}
+    \end{equation*}
+    Furthermore $\sigma(ghg^{-1}) = \id$ as $\varpi^ax$ is modded out under the canonical map $\pi$. Thus this acts trivially. Thus 
+    \begin{equation*}
+        \sigma\left(\begin{pmatrix}
+        1&x\\
+        \:&1
+    \end{pmatrix}\right)T(v) = T(v).
+    \end{equation*}
+    However, no non-zero vector is fixed by elements of $N(k_F)$. Thus $T(v)=0$.
+    \par\textbf{(d)}
+    Provided \textbf{(c)}, such representation in \textbf{(b)} exists. Set $\pi\defeq \cind_{ZK}^G(\sigma$ is unitary and irreducible). By Theorem 51 of the lecture we have,
+    \begin{equation*}
+        \beta(g) = \langle gv,w\rangle = \langle gv,w\rangle, v,w\in V.
+    \end{equation*}
+    \begin{remark}
+        Let $K'\subseteq G$ be open such that $K'?Z$ is compact. Then $\cind_{K'}^G\sigma$ is irreducible implies it is supercuspidal. This is from Problem 4(b) from Homework 6.
+    \end{remark}
+
+\par\textbf{2.}
+We want to show that 
+\begin{equation*}
+    V=\cind_H^G(\pi_H)\nu\stackrel{\sim}{\to}\cind_H^G(\pi_H\nu|_H)=V'.
+\end{equation*}
+Consider 
+\begin{equation*}
+    F:V\to V', f\mapsto(g\mapsto(\nu(g)f(g))).
+\end{equation*}
+this is compactly supported, invariant under the right action by some open compact subgroup. Furthermore for all $h\in H, g\in G$,
+\begin{equation*}
+    F(f)(hg) = \nu(hg)f(hg) = \nu(h)\nu(g)\pi_H(g)f(g) = (\nu|_H\pi_H)(h)(F(f)(g)).
+\end{equation*}
+$F$ is injective. Indeed if $f_1,f_2\in V$, $F(f_1)(g) = F(f_2)(g)$ for all $g\in G$ then $f_1=f_2$. This is surjective by sending $f\in V'$ to 
+\begin{equation*}
+    g\mapsto \nu(g^{-1})f(g).
+\end{equation*}
+The $G$-equivariance is due to that $f\in V,g,s\in G$, 
+\begin{align*}
+    gF(f)(s) = \nu(sg)f(sg) = \nu(g)\nu(s)f(sg) = \nu(g)\nu(s)(g f)(s) = F(g\cdot f)(s).
+\end{align*}
+\par\textbf{(b)}
+$H'\subseteq H\subseteq G$, We havea
+\begin{equation*}
+    \cind_{H}^G(\sigma)\cong \C[G]\tens{\C[H]}(\sigma,W).
+\end{equation*}
+Thus we have,
+\begin{center}
+    \begin{tikzcd}
+{\C[G]\tens{\C[H]}(\sigma,W)} & {\C[H]\tens{\C[H']}(\sigma,W)} & {(\sigma,W)} \\
+{\C[G]}                       & {\C[H]}                        & {\C[H']}    
+\end{tikzcd}
+\end{center}
+Therefore,
+\begin{center}
+    \begin{tikzcd}
+{\C[G]\tens{C[H']}W} \arrow[d] \arrow[r] & {\C[G]\tens{\C[H]}(\C[H]\tens{\C[H']}W)} \arrow[d] \\
+\cind_{H'}^G\sigma \arrow[r]             & \cind_{H}^G(\cind_{H'}^H\sigma)                   
+\end{tikzcd}
+\end{center}
+
+\par\textbf{(c)}
+
+\begin{equation*}
+    T = \bigcap_{\nu\in X_{\nr}(G)_\pi}, H = \Stab_G(W).
+\end{equation*}
+Observe that $[H,T]<\infty$ and $H/T$ is abelian. One way to see this is by observing $ZG^\circ\leq T\leq H\leq G$. $T\leq H$ comes from Lemma 95.
+By the previous part we have,
+\begin{equation*}
+    \cind_T^H(\pi|_T)\cong \C[H]\tens{\C[T]}\pi|_T\cong\C[H/T]\tens{\C}
+    (\pi)
+\end{equation*}
+The last isomorphism is constructed explicitly in the following way,
+\begin{equation*}
+    th_j\otimes w\mapsto \overline{h_i}\otimes\pi(t)w,
+\end{equation*}
+where $H/T = \{h_1,\cdots,h_m\}$.
+\begin{remark}
+    Let $H\leq G$ closed, and $\pi$ be a rep of $G$ $\sigma$ be a rep of $H$ then 
+    \begin{equation*}
+        \cind_H^G(\sigma\tens\pi|_G) \cong \cind_H^G(\sigma)\otimes \pi.
+    \end{equation*}
+\end{remark}
+\end{document}

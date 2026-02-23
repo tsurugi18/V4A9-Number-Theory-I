@@ -1,0 +1,304 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{nicematrix}
+\usepackage{ stmaryrd }
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{defi}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
+\newtheorem{claim}{Claim}[section] 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cind}{c-Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Sets}{Sets}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\hecke}[0]{\mathscr{H}}
+\newcommand{\zet}[0]{\mathfrak{z}}
+
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{V4A9 Homework 8}
+\author{So Murata, Heijing Shi}
+\date{WiSe 25/26, University of Bonn Number Theory 1}
+
+\begin{document}
+\maketitle
+\par\textbf{(1)}
+We have,
+\begin{equation*}
+    \hecke(G,G^\circ,\pi^\circ) = \Span_\C\{c\phi_1^{e_1}\ast\cdots\ast\phi_n^{e_n}\sep e_n\in\Z\}.
+\end{equation*}
+Define 
+\begin{equation*}
+    \phi_1^{e_1}\ast\cdots\ast\phi_n^{e_n}\geq\phi_1^{e'_1}\ast\cdots\ast\phi_n^{e'_n}
+\end{equation*}
+in the dictionary order. Let $\psi_1\psi_2\in\hecke(G,G^\circ,\pi^\circ)$ then $\psi_1\ast\psi_2$ then $\psi_1\ast\psi_2\not=0$, 
+Then we have 
+\begin{equation*}
+    (\text{leading term of $\psi_1$})\times (\text{leading term of $\psi_2$}) = (\text{leading term of $\psi_1\ast\psi_2$}).
+\end{equation*}
+Note that 
+\begin{equation*}
+    \phi_i\ast\phi_j = c_{ij}\phi_j\ast\phi_i(c_{ij}\not=0).
+\end{equation*}
+Thus above argument is justified.
+\par\textbf{(2)}
+Let $P\subsetneq G$ be a proper parabolic subgroup. For $K\subseteq P$ a compact open subgroup, set 
+\begin{equation*}
+    \delta_P(p) = \vert pKp^{-1}/pKp^{-1}\cap K\vert \vert K/pKp^{-1}\cap K\vert^{-1}.
+\end{equation*}
+Let $\mu$ be a left Haar measure, over $P$, and the homeomorphism 
+\begin{equation*}
+    g\mapsto gp^{-1},
+\end{equation*}
+induces another left Haar measure such that $\delta'(p)\mu = \mu_P$, then 
+\begin{equation*}
+    \delta'(p)\mu(K) = \mu_P(K) = \mu(Kp^{-1}) = \mu(p^{-1}pKp^{-1}) = \mu(pKp^{-1})
+\end{equation*}
+Thus $\delta(p) = {\frac {\mu(pKp^{-1})} {\mu(K)}}$. If $K'\subset K$ be compact open subgroup then 
+\begin{equation*}
+    K = \bigsqcup_{i=1}^n x_iK', n = [K:K'].
+\end{equation*}
+Thus we have $\mu(K) = n\mu(K')$ thus $[K:K'] = {\frac {\mu(K)} {\mu(K')}}$. THus $\delta'(p) = \delta_P(p)$ which is invariant. Note that left Haar measure is unique up to positive constant.
+\par The triviality on a compact open subgroup follows from that we have proven the definition is invariant of the choice of $K$, thus for any compact open subgroup $K$, define $\delta_P$ using such $K$. 
+\par It is indeed a character indeed for $K\subseteq P$, compact, 
+\begin{equation*}
+    \delta_P(pq)\mu(K) = \mu(K(pq)^{-1}) = \delta_P(p)\delta_P(q)\mu(K).
+\end{equation*}
+
+\par\textbf{(4)}
+
+We know that 
+\begin{equation*}
+    B = TN,
+\end{equation*}
+where $T$ is the diagonal matrices and $N$ is the unipotent subgroup whose diagonals are all $1$. To determine the value of $\delta_B$, it is enough to do it separately on $T$ and $N$. 
+    We have $K = (1+\varpi\Mat_{n\times n}(\Ouv_F))\cap B$ is a compact open subgroup of $B$.
+\begin{example}[Toy case, $n=2$]
+    \begin{equation*}
+        \begin{pmatrix}
+            1& x\\
+            0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1+a\varpi& b\varpi\\
+            c\varpi & 1+d\varpi
+        \end{pmatrix}
+        \begin{pmatrix}
+            1& -x\\
+            0 & 1
+        \end{pmatrix}
+        = 
+        \begin{pmatrix}
+            1 + a\varpi & dx\varpi+b\varpi-ax\varpi\\
+            0 & 1+d\varpi
+        \end{pmatrix}
+    \end{equation*}
+    Also note that $\ord_\varpi(x) = \ord_\varpi(-x)$, thus 
+    \begin{equation*}
+        pKp = p^{-1}Kp,
+    \end{equation*}
+    where $p = \begin{pmatrix}
+            1& x\\
+            0 & 1
+        \end{pmatrix}$ thus 
+        \begin{equation*}
+            \delta_B(p) = \delta_B(p^{-1}).
+        \end{equation*}
+        Thus $\delta_B(p) = 1$.
+\end{example}
+Another argument is that 
+\begin{remark}
+    The unipotent radical is exhausted by compact subgroups. Thus modulus character is trivial on the unipotent radical.
+\end{remark}
+\par For the diagonal part and let us suppose that $n=\ord_\varpi\left({\frac {t_i} {t_j}}\right)\geq0$.
+\begin{equation*}
+    \underbrace{\begin{pmatrix}
+        t_1 & \:&\:\\
+        \: & \ddots & \:\\
+        \: & \: & t_n
+    \end{pmatrix}}_{=t\in T}
+    K
+    \begin{pmatrix}
+        t_1^{-1} & \:&\:\\
+        \: & \ddots & \:\\
+        \: & \: & t_n^{-1}
+    \end{pmatrix}
+     = 
+     \begin{pmatrix}
+        1+\varpi\Ouv_F & \:&\:\\
+        \: & \ddots & \:\\
+        \: & \: & 1+\varpi\Ouv_F
+    \end{pmatrix}
+\end{equation*}
+Thus $tKt^{-1}\subset K$, thus the problem amounts to show that 
+\begin{equation*}
+    \delta_B(t) = \vert tKt^{-1}/K\vert.
+\end{equation*}
+Let $\lambda\in 1+\underbrace{\varpi\Ouv_F/1+\varpi^{n+1}\Ouv_F}_{q^n}$,
+\begin{equation*}
+    (I+\lambda E_{ij})tKt^{-1}
+\end{equation*}
+Thus we conclude,
+\begin{equation*}
+    \delta_B(t) = \prod_{i<j}\left\vert{\frac {t_i} {t_j}}\right\vert.
+\end{equation*}
+\par\textbf{(5)}
+Recall that we have, the set of roots is 
+\begin{equation*}
+    \Phi = \{e_i-e_j\sep i\not=j\},\Phi+= \{e_i-e_j\sep i<j\}. 
+\end{equation*}
+The set of simple roots are ,
+\begin{equation*}
+    \Delta = \{e_i-e_{i+1}\sep i=1,\cdots,n-1\}, \Delta'\subset\Delta.
+\end{equation*}
+We claim that $P_{\Delta'}$ is determined by a partition $(n_1,\cdots,n_k)$ such that $n_1+\cdots +n_k = n$. 
+\begin{equation*}
+    P_{\Delta'}=\left\{
+        \begin{pmatrix}
+            g_1 & \ast & \ast \\
+            O & \ddots & \ast \\
+            O & O & g_k
+        \end{pmatrix}
+        \:\Bigg{|}\: g_i\in\GL_{n_i}
+    \right\}.
+\end{equation*}
+$e_i-e_{i+1}\in\Delta'$ if and only if $i$ and $i+1$ belong to the same block. $P_\Delta = \GL_n$, $P_\emptyset = B$ where $\Delta$ corresponds to $(n)$ and $\emptyset$ corersponds to $(1,\cdots,1)$.
+\begin{equation*}
+    \delta(p) = \prod_{i=2}^k \vert \det g_i\vert^{-\sum_{j=1}^{i-1}n_j+\sum_{j=i+1}^k n_j}.
+\end{equation*} 
+if $n_j=$ then 
+\begin{equation*}
+    \delta(p) = \prod_{p=1}^n \vert t_i\vert^{2i+1-n} = \prod_{i<j}\left\vert {\frac {t_i} {t_j}}\right\vert.
+\end{equation*}
+From Exercise \textbf{(3)}, we have, 
+\begin{equation*}
+    \int f(tn) dtdn
+\end{equation*}
+is a left Haar measure and 
+\begin{equation*}
+    \int f(nt) dtdn  = \int f(tn)\delta(tn)dtdn
+\end{equation*}
+is a right Haar measure. We compute the Jacobian of the following variable substitution,
+\begin{equation*}
+    \underbrace{\begin{pmatrix}
+        u_1 & \ast &\ast \\
+        \: & \ddots & \ast \\
+        \: & \: & u_n
+    \end{pmatrix}}_{\text{variable}}
+     \underbrace{\begin{pmatrix}
+        a_1 & \ast &\ast \\
+        \: & \ddots & \ast \\
+        \: & \: & a_n
+    \end{pmatrix}}_{\text{constant}}
+    =
+     \begin{pmatrix}
+        v_1 & \ast &\ast \\
+        \: & \ddots & \ast \\
+        \: & \: & v_n
+    \end{pmatrix}
+\end{equation*}
+
+For the detailed treatment see Goldfreld 14.3.6
+\par\textbf{(5)} Dr. Dillery's solution
+\par Let $P = MN$ where $M$ is the levi factor and $N$ is the unipotent part. As we have seen, it suffices to calculate 
+\begin{equation*}
+    \delta_P(m),\forall m\in M.
+\end{equation*}
+
+Recall the Cartan decomposition $T_M = Z(M)^\circ(F) = \{t\in T_M\sep \vert \alpha(t)\vert \leq 1\forall\alpha\in\Delta\}$. Use that there is $K_0$ compact open such that 
+\begin{equation*}
+    G = \coprod_{t\in T_M^+}K_0wt K_0.
+\end{equation*}
+
+For the exercise, in $\GL_n$, $w$ can be taken out from the equation. Assuming this we get,
+
+\begin{equation*}
+    G = \coprod_{t\in T_M^+}K_0t K_0.
+\end{equation*}
+
+To compute $\delta_P(m)$ it suffices to compute $\delta_P(t)$ where $t\in T_m'$. Choose $K$ small enough so that we have,
+\begin{equation*}
+    t\cdot K\cap P = t(K\cap M)\cdot(K\cap N)t^{-1}.
+\end{equation*}
+
+Since $t \in Z(M)(F)$, we have 
+\begin{equation*}
+    t\cdot K\cap P = (K\cap M)t(K\cap N)t^{-1}.
+\end{equation*}
+Thus the explicit computation will be 
+\begin{equation*}
+    \vert t(K\cap N)t^{-1}/t(K\cap N)t^{-1}\cap (K\cap N)\vert \cdot \vert K\cap N/t(K\cap N)t^{-1}\cap (K\cap N)\vert^{-1}.
+\end{equation*}
+\end{document}
